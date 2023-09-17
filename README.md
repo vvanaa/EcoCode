@@ -6,7 +6,7 @@ Welcome to our group project repository developed by the following group members
 - Pelin
 - Catherine
 
-- 
+  
 ## Project Description
 **Project Name:** EcoCode - Where Sustainability Meets Code
 
