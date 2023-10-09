@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blockly R Code Generator</title>
+    <!-- Import Blockly's core CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/google/blockly@latest/blockly.css">
+    <!-- Import Bootstrap CSS -->
+    <link href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body class="bg-light">
+
+<div class="container my-5">
+    <!-- Blockly's main workspace -->
+    <div id="blocklyDiv" style="height: 480px; width: 100%; border: 1px solid #aaa;"></div>
+
+    <!-- Buttons to generate and save R code -->
+    <button class="btn btn-primary mt-3" onclick="generateRCode()">Generate R Code</button>
+    <button class="btn btn-success mt-3" onclick="downloadRCode()">Save Code</button>
+</div>
+
+<!-- Blockly's JavaScript initial configuration -->
+<script src="https://cdn.jsdelivr.net/gh/google/blockly@latest/blockly_compressed.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/blockly@latest/blocks_compressed.js"></script>
+<script src="https://cdn.jsdelivr.net/gh/google/blockly@latest/r_compressed.js"></script> <!-- For R Code Generation -->
+<!-- Load your custom blocks -->
+<script src="custom_blocks.js"></script> <!-- Connects to your custom_blocks.js file -->
+
+<script>
+    // Initialize the Blockly workspace for R code generation
+    const workspace = Blockly.inject('blocklyDiv', {
+        toolbox: document.getElementById('toolbox')
+    });
+
+    // Function to generate R code and display in an alert
+    function generateRCode() {
+        let rCode = Blockly.R.workspaceToCode(workspace);
+        alert('Generated R Code:\n\n' + rCode);
+    }
+
+    // Function to save generated R code as a .R file
+    function downloadRCode() {
+        let rCode = Blockly.R.workspaceToCode(workspace);
+        let blob = new Blob([rCode], {type: 'text/plain'});
+        let a = document.createElement('a');
+        a.download = 'generated_code.R';
+        a.href = URL.createObjectURL(blob);
+        a.click();
+    }
+</script>
+
+<!-- Toolbox definition -->
+<xml id="toolbox" style="display: none">
+    <block type="turn_off_lights"></block>
+    <block type="motion_sensor"></block>
+    <block type="reduce_water_usage"></block>
+    <!-- Add other custom blocks here -->
+</xml>
+
+<!-- Import Bootstrap JS -->
+<script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.3/dist/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+
+</body>
+</html>
