@@ -1,0 +1,99 @@
+html, body, div, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a background color to the entire page */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/* Main content container */
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Blockly container */
+.blockly-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blockly {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 20px;
+    min-height: 400px;
+}
+
+.toolbox {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+}
+
+/* Button container */
+.button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.button-container button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button-container input[type="file"] {
+    display: none;
+}
+
+/* Output container */
+.output-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.code-output {
+    flex-grow: 1;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    min-height: 200px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+}
