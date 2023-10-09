@@ -1,0 +1,73 @@
+/* Style the Blockly workspace container */
+#blocklyDiv {
+    height: 480px;
+    width: 100%;
+    border: 1px solid #aaa;
+    margin-bottom: 20px;
+}
+
+/* Style the Blockly toolbox (block menu) */
+.blocklyToolboxDiv {
+    background-color: #f3f3f3;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    max-width: 200px;
+    float: left;
+    margin-right: 20px;
+}
+
+/* Style the Blockly toolbox categories (if using categories) */
+.blocklyTreeLabel {
+    font-size: 14px;
+    font-weight: bold;
+    color: #333;
+    cursor: pointer;
+}
+
+/* Style individual Blockly blocks */
+.blocklyBlock {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 5px;
+    margin-bottom: 5px;
+    cursor: pointer;
+}
+
+/* Style selected Blockly blocks */
+.blocklySelected>.blocklyBlock {
+    border: 2px solid hwb(284 0% 0%);
+}
+
+/* Style Blockly buttons */
+button.btn-blockly {
+    margin-top: 10px;
+    font-size: 16px;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+/* Style Blockly buttons on hover */
+button.btn-blockly:hover {
+    background-color: #0056b3;
+}
+
+/* Style the container div */
+.container {
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #fff;
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Style the page background */
+body {
+    background-color: #f9f9f9;
+}
+
