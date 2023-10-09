@@ -10,10 +10,10 @@ Blockly.Blocks['turn_off_lights'] = {
   },
 };
 
-Blockly.Python['turn_off_lights'] = function (block) {
-  var code = 'print("Remember to turn off lights when not in use.")\n';
-  code += 'energy_tips = get_energy_tips()  # Assuming a get_energy_tips function in Python\n';
-  code += 'if energy_tips:\n    print(energy_tips)\n';
+Blockly.R['turn_off_lights'] = function (block) {
+  var code = 'cat("Remember to turn off lights when not in use.\\n")\n';
+  code += 'energy_tips <- get_energy_tips()  # Assuming a get_energy_tips function in R\n';
+  code += 'if (!is.null(energy_tips)) {\n    cat(energy_tips, "\\n")\n}\n';
   return code;
 };
 
@@ -29,9 +29,9 @@ Blockly.Blocks['motion_sensor'] = {
   },
 };
 
-Blockly.Python['motion_sensor'] = function (block) {
-  var code = 'print("Benefits of motion sensors for energy efficiency:")\n';
-  code += 'print("Motion sensors reduce energy waste by turning off lights when not needed.")\n';
+Blockly.R['motion_sensor'] = function (block) {
+  var code = 'cat("Benefits of motion sensors for energy efficiency:\\n")\n';
+  code += 'cat("Motion sensors reduce energy waste by turning off lights when not needed.\\n")\n';
   return code;
 };
 
@@ -47,12 +47,13 @@ Blockly.Blocks['reduce_water_usage'] = {
   },
 };
 
-Blockly.Python['reduce_water_usage'] = function (block) {
-  var code = 'print("Practical suggestions to reduce water consumption:")\n';
-  code += 'water_tips = get_water_saving_tips()  # Assuming a get_water_saving_tips function in Python\n';
-  code += 'if water_tips:\n    print(water_tips)\n';
+Blockly.R['reduce_water_usage'] = function (block) {
+  var code = 'cat("Practical suggestions to reduce water consumption:\\n")\n';
+  code += 'water_tips <- get_water_saving_tips()  # Assuming a get_water_saving_tips function in R\n';
+  code += 'if (!is.null(water_tips)) {\n    cat(water_tips, "\\n")\n}\n';
   return code;
 };
+
 
 
 
