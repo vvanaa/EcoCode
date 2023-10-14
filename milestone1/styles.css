@@ -1,3 +1,4 @@
+/* Reset default margins and padding for certain elements */
 html, body, div, h1, p {
     margin: 0;
     padding: 0;
@@ -97,3 +98,31 @@ footer {
     margin-top: 20px;
     color: #888;
 }
+
+/* Raindrop animation */
+@keyframes raindrop {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+.raindrop {
+    position: absolute;
+    width: 2px;
+    height: 10px;
+    background: blue;
+    animation: raindrop 1s linear infinite;
+    opacity: 0.7;
+}
+
+.raindrop:nth-child(1) {
+    left: 5%;
+    animation-duration: 1.2s;
+}
+
+.raindrop:nth-child(2) {
+    left: 15%;
+    animation-duration: 1.5s;
+}
+
+/* Add more raindrops with different positions and durations as needed */
