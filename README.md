@@ -6,6 +6,8 @@ Welcome to our group project repository developed by the following group members
 - Pelin
 - Catherine
 
+## GitHub-Pages URL
+https://vvanaa.github.io/EcoCode/milestone1/ 
   
 ## Project Description
 **Project Name:** EcoCode - Where Sustainability Meets Code
