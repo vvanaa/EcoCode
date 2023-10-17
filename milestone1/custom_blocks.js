@@ -128,6 +128,63 @@ function getRecyclingTips() {
   ];
   return tips;
 };
+Blockly.Blocks['calculate_simplified_carbon_footprint'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Calculate Simplified Carbon Footprint");
+    this.appendValueInput("electricity_usage")
+        .setCheck("Number")
+        .appendField("Monthly Electricity Usage (kWh)");
+    this.appendValueInput("vehicle_mileage")
+        .setCheck("Number")
+        .appendField("Monthly Vehicle Mileage (miles)");
+    this.appendDummyInput()
+        .appendField("Diet")
+        .appendField(new Blockly.FieldDropdown([
+          ["Meat Lover", "HIGH"], 
+          ["Vegetarian", "MEDIUM"], 
+          ["Vegan", "LOW"]
+        ]), "diet");
+    this.setInputsInline(false);
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+    this.setTooltip("Enter details to calculate a simplified carbon footprint score.");
+    this.setHelpUrl("https://www.footprintcalculator.org/"); // the actual calculator for reference
+  }
+};
+
+Blockly.JavaScript['calculate_simplified_carbon_footprint'] = function(block) {
+  var electricity_usage = Blockly.JavaScript.valueToCode(block, 'electricity_usage', Blockly.JavaScript.ORDER_ATOMIC) || 0;
+  var vehicle_mileage = Blockly.JavaScript.valueToCode(block, 'vehicle_mileage', Blockly.JavaScript.ORDER_ATOMIC) || 0;
+  var diet = block.getFieldValue('diet');
+  
+  // Simplified assumptions for carbon footprint calculation
+  var electricityFootprint = electricity_usage * 0.9; // assuming 0.9 kg CO2e per kWh, which is a rough average
+  var vehicleFootprint = vehicle_mileage * 0.4; // assuming 0.4 kg CO2e per mile, depending on vehicle type and fuel
+  
+  var dietFootprint = 0;
+  switch (diet) {
+    case 'HIGH':
+      dietFootprint = 3000; // arbitrary unit for high meat consumption
+      break;
+    case 'MEDIUM':
+      dietFootprint = 2000; // arbitrary unit for vegetarians
+      break;
+    case 'LOW':
+      dietFootprint = 1000; // arbitrary unit for vegans
+      break;
+  }
+  
+  var totalFootprint = electricityFootprint + vehicleFootprint + dietFootprint;
+  
+  // Here, you might want to do something with the result, like display it to the user.
+  // We're just going to return it as a value for now.
+  var code = 'alert("Simplified carbon footprint score: " + ' + totalFootprint + ');';
+  return code;
+};
+
+
 
 // Optimize Transportation
 Blockly.Blocks['optimize_transportation'] = {

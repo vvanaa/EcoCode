@@ -106,24 +106,35 @@ footer {
     }
 }
 
+/* Raindrop animation */
+@keyframes raindrop {
+    to {
+        transform: translateY(100vh); /* Animation: Move raindrop from top to bottom of viewport */
+    }
+}
+
+/* Style for raindrop elements */
 .raindrop {
-    position: absolute;
-    width: 2px;
-    height: 10px;
-    background: blue;
-    animation: raindrop 1s linear infinite;
-    opacity: 0.7;
+    position: absolute; /* Allows positioning anywhere on the screen */
+    width: 2px; /* Width of each raindrop */
+    height: 10px; /* Height of each raindrop */
+    background: blue; /* Color of the raindrops (blue) */
+    animation: raindrop 1s linear infinite; /* Apply the 'raindrop' animation, 1 second duration, smooth movement, and repeat infinitely */
+    opacity: 0.7; /* Slightly transparent raindrops */
 }
 
+/* Style for the first raindrop */
 .raindrop:nth-child(1) {
-    left: 5%;
-    animation-duration: 1.2s;
+    left: 5%; /* Position the first raindrop 5% from the left edge */
+    animation-duration: 1.2s; /* Override animation duration to make it fall a bit slower (1.2 seconds) */
 }
 
+/* Style for the second raindrop */
 .raindrop:nth-child(2) {
-    left: 15%;
-    animation-duration: 1.5s;
+    left: 15%; /* Position the second raindrop 15% from the left edge */
+    animation-duration: 1.5s; /* Override animation duration to make it fall a bit faster (1.5 seconds) */
 }
+
 
 
 .sun {
