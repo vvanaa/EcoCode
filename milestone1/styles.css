@@ -126,16 +126,41 @@ footer {
 }
 
 
-/* Sun styles */
 .sun {
     position: absolute;
-    top: 10%; /* Adjust to place the sun higher or lower */
-    right: 1%; /* Adjust to place the sun further or closer to the corner */
+    top: 10%;
+    right: 1%;
     width: 100px;
     height: 100px;
-    background: yellow;
+    background: radial-gradient(circle, #FFD700 10%, #FFA500 30%, #FF4500 100%);
     border-radius: 50%;
-    box-shadow: 0 0 50px yellow; /* Sun's glow effect */
+    box-shadow: 0 0 50px #FFD700; /* glow effect */
+    animation: pulse 2s infinite, move 5s infinite;
+}
+
+/* Animation for the pulsating effect */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 50px #FFD700;
+    }
+    50% {
+        box-shadow: 0 0 100px #FF8C00;
+        transform: scale(1.1);
+    }
+    100% {
+        box-shadow: 0 0 50px #FFD700;
+        transform: scale(1);
+    }
+}
+
+/* Animation for the floating effect */
+@keyframes move {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
 }
 
 /* Snowflake styles */
@@ -154,7 +179,5 @@ footer {
     }
 }
 
-/* Existing raindrop styles... */
 
 
-/* Add more raindrops with different positions and durations as needed */
