@@ -73,26 +73,6 @@ function getWaterSavingTips() {
   return tips;
 };
 
-// Calculate Carbon Footprint
-Blockly.Blocks['calculate_carbon_footprint'] = {
-  init: function() {
-    this.appendDummyInput().appendField("Calculate Carbon Footprint");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(140);
-    this.setTooltip("Calculate your carbon footprint here and learn its impact on the environment.");
-    this.setHelpUrl("https://www.footprintcalculator.org/home/en"); // calculator website
-    this.setTooltip("Learn about actions to reduce carbon footprint.");
-    this.setHelpUrl("https://news.climate.columbia.edu/2018/12/27/35-ways-reduce-carbon-footprint/");
-  }
-};
-
-Blockly.JavaScript['calculate_carbon_footprint'] = function(block) {
-  var code = 'console.log("Awareness of carbon footprint and ways to reduce it:");\n';
-  code += 'let footprint_tips = getCarbonFootprintTips();  // Assuming a getCarbonFootprintTips function in JS\n';
-  code += 'alert(footprint_tips)';
-  return code;
-};
 
 function getCarbonFootprintTips() {
   var tips = [
@@ -131,7 +111,7 @@ function getRecyclingTips() {
 Blockly.Blocks['calculate_simplified_carbon_footprint'] = {
   init: function() {
     this.appendDummyInput()
-        .appendField("Calculate Simplified Carbon Footprint");
+        .appendField("Calculate Carbon Footprint");
     this.appendValueInput("electricity_usage")
         .setCheck("Number")
         .appendField("Monthly Electricity Usage (kWh)");
