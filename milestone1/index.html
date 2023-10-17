@@ -2,37 +2,8 @@
 <html>
 <head>
     <meta charset="UTF-8">
-    <title>Blockly Custom Blocks with Rain</title>
+    <title>Blockly Custom Blocks</title>
     <link rel="stylesheet" href="styles.css">
-    <style>
-        /* Add the raindrop animation styles here */
-        @keyframes raindrop {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-
-        .raindrop {
-            position: absolute;
-            width: 2px;
-            height: 10px;
-            background: blue;
-            animation: raindrop 1s linear infinite;
-            opacity: 0.7;
-        }
-
-        .raindrop:nth-child(1) {
-            left: 5%;
-            animation-duration: 1.2s;
-        }
-
-        .raindrop:nth-child(2) {
-            left: 15%;
-            animation-duration: 1.5s;
-        }
-
-        /* Add more raindrops with different positions and durations as needed */
-    </style>
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
     <script src="custom_blocks.js"></script>
 </head>
@@ -45,9 +16,6 @@
         </a>
     </header>
     <main>
-        <!-- The raindrop animation will be created here -->
-        <div class="rain-container"></div>
-
         <div class="blockly-container">
             <div id="blocklyDiv" class="blockly"></div>
             <div class="toolbox">
@@ -57,7 +25,7 @@
                     <block type="motion_sensor"></block>
                     <block type="reduce_water_usage"></block>
                     <block type="calculate_carbon_footprint"></block>
-                    <block type="recycle"></block> <!-- Fixed block type name -->
+                    <block type="how_to_recycle"></block>
                     <block type="optimize_transportation"></block>
                     <block type="solar_panel_control"></block>
                     <block type="waste_reduction"></block>
@@ -80,7 +48,6 @@
         &copy; EcoCode ♻️
     </footer>
     <script>
-        // The existing JavaScript code remains unchanged
         var workspace = Blockly.inject('blocklyDiv', {
             toolbox: document.getElementById('toolbox'),
             scrollbars: true
@@ -125,25 +92,6 @@
             reader.readAsText(file);
         }
 
-        // Add the JavaScript code for the rain animation
-        document.addEventListener("DOMContentLoaded", function () {
-            createRaindrops();
-        });
-
-        function createRaindrops() {
-            const numRaindrops = 50; // Adjust the number of raindrops as needed
-
-            for (let i = 0; i < numRaindrops; i++) {
-                const raindrop = document.createElement("div");
-                raindrop.className = "raindrop";
-                document.querySelector(".rain-container").appendChild(raindrop);
-
-                // Set a random initial position and delay for each raindrop
-                const initialDelay = Math.random() * 2;
-                raindrop.style.left = Math.random() * 100 + "vw";
-                raindrop.style.animationDelay = initialDelay + "s";
-            }
-        }
     </script>
 </body>
 </html>
