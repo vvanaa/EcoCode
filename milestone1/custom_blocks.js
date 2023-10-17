@@ -139,45 +139,46 @@ Blockly.JavaScript['calculate_simplified_carbon_footprint'] = function(block) {
   var vehicle_mileage = Blockly.JavaScript.valueToCode(block, 'vehicle_mileage', Blockly.JavaScript.ORDER_ATOMIC) || 0;
   var diet = block.getFieldValue('diet');
   
-  // Simplified assumptions for carbon footprint calculation
-  var electricityFootprint = electricity_usage * 0.9; // assuming 0.9 kg CO2e per kWh, which is a rough average
-  var vehicleFootprint = vehicle_mileage * 0.4; // assuming 0.4 kg CO2e per mile, depending on vehicle type and fuel
+  // Constants representing average emissions per unit. These might need to be updated based on the most recent data or regional specifics.
+  const ELECTRICITY_EMISSIONS_FACTOR = 0.9; // kg CO2e per kWh
+  const GASOLINE_EMISSIONS_FACTOR = 2.31; // kg CO2e per gallon of gasoline (approximate)
   
-  var dietFootprint = 0;
-  switch (diet) {
-    case 'HIGH':
-      dietFootprint = 3000; // arbitrary unit for high meat consumption
-      break;
-    case 'MEDIUM':
-      dietFootprint = 2000; // arbitrary unit for vegetarians
-      break;
-    case 'LOW':
-      dietFootprint = 1000; // arbitrary unit for vegans
-      break;
-  }
+  // Improved approach for diet-related carbon footprint, values per month
+  const DIET_EMISSIONS = {
+    'HIGH': 600, // kg CO2e
+    'MEDIUM': 400, // kg CO2e
+    'LOW': 250 // kg CO2e
+  };
+
+  // Convert electricity usage to carbon footprint
+  var electricityFootprint = electricity_usage * ELECTRICITY_EMISSIONS_FACTOR;
+
+  // Calculate the vehicle footprint assuming a standard fuel economy
+  var vehicleFootprint = vehicle_mileage * GASOLINE_EMISSIONS_FACTOR; // This assumes each mile driven consumes 1/GASOLINE_EMISSIONS_FACTOR gallons of gasoline
   
+  // Get diet footprint from our updated table
+  var dietFootprint = DIET_EMISSIONS[diet];
+
+  // Total carbon footprint
   var totalFootprint = electricityFootprint + vehicleFootprint + dietFootprint;
   
+  // Determine the classification based on the total footprint
   var classification;
-    if (totalFootprint <= 400) {
-      classification = 'Very Low Carbon Footprint';
-    } else if (totalFootprint <= 1000) {
-      classification = 'Low Carbon Footprint';
-    } else if (totalFootprint <= 2000) {
-      classification = 'Moderate Carbon Footprint';
-    } else if (totalFootprint <= 3000) {
-      classification = 'High Carbon Footprint';
-    } else {
-      classification = 'Very High Carbon Footprint';
+  if (totalFootprint <= 400) {
+    classification = 'Very Low Carbon Footprint';
+  } else if (totalFootprint <= 1000) {
+    classification = 'Low Carbon Footprint';
+  } else if (totalFootprint <= 2000) {
+    classification = 'Moderate Carbon Footprint';
+  } else if (totalFootprint <= 3000) {
+    classification = 'High Carbon Footprint';
+  } else {
+    classification = 'Very High Carbon Footprint';
   }
 
+  // Generate the code to create an alert with the footprint and its classification
   var code = 'alert("Simplified carbon footprint score: ' + totalFootprint + 
-           '\\nClassification: ' + classification + '");\n';
-  return code;
-
-  // Here, you might want to do something with the result, like display it to the user.
-  // We're just going to return it as a value for now.
-  var code = 'alert("Simplified carbon footprint score: " + ' + totalFootprint + ');';
+             '\\nClassification: ' + classification + '");\n';
   return code;
 };
 
