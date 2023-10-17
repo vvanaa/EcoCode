@@ -102,12 +102,84 @@ Blockly.JavaScript['how_to_recycle'] = function(block) {
   return code;
 };
 
+
 function getRecyclingTips() {
   var tips = [
     " Empty, clean, and dry recyclables\n Keep food and liquid out of recycling\n Keep recyclables loos, not in a bag"
   ];
   return tips;
 };
+
+
+// Calculate Electricity Cost
+Blockly.Blocks['calculate_electricity_cost'] = {
+  init: function() {
+    this.appendDummyInput().appendField("Calculate Electricity Cost");
+    this.appendValueInput("kwh_usage")
+        .setCheck("Number")
+        .appendField("Electricity Usage (kWh)");
+    this.setInputsInline(false);
+    this.setOutput(true, "Number");
+    this.setColour(230);
+    this.setTooltip("Calculates electricity cost based on kWh usage.");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['calculate_electricity_cost'] = function(block) {
+  var kwh_usage = Blockly.JavaScript.valueToCode(block, 'kwh_usage', Blockly.JavaScript.ORDER_ATOMIC);
+  
+  // Define the cost per kWh (this value should be updated to reflect the current cost in Orange County)
+  var COST_PER_KWH = 0.20; // This is a hypothetical value; you should input the actual cost per kWh
+  
+  var code = kwh_usage + ' * ' + COST_PER_KWH;
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+// Calculate Vehicle Expenses
+Blockly.Blocks['gasoline_expenses'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Calculate expenses for gasoline")
+        .appendField(new Blockly.FieldDropdown([
+            ["Regular - $5.589", "5.589"], 
+            ["Mid-Grade - $5.830", "5.830"], 
+            ["Premium - $5.976", "5.976"], 
+            ["Diesel - $6.321", "6.321"]
+         ]), "GASOLINE_TYPE");
+    this.appendValueInput("MILES")
+        .setCheck("Number")
+        .appendField("Miles driven per month");
+    this.appendDummyInput()
+        .appendField("Fuel Efficiency (miles/gallon)")
+        .appendField(new Blockly.FieldNumber(25), "FUEL_EFFICIENCY"); // Assuming a default of 25 mpg
+    this.setInputsInline(false);
+    this.setOutput(true, "Number");
+    this.setColour(230);
+    this.setTooltip("Calculate monthly gasoline expenses based on miles driven and fuel efficiency.");
+    this.setHelpUrl("");
+  }
+};
+
+
+
+Blockly.JavaScript['gasoline_expenses'] = function(block) {
+  var gasolinePrice = block.getFieldValue('GASOLINE_TYPE'); // This is the price per gallon based on the selection
+  var milesPerMonth = Blockly.JavaScript.valueToCode(block, 'MILES', Blockly.JavaScript.ORDER_ATOMIC);
+  var fuelEfficiency = block.getFieldValue('FUEL_EFFICIENCY');
+
+  // Calculation: (Miles driven per month / fuel efficiency) * price per gallon
+  var code = `((${milesPerMonth} / ${fuelEfficiency}) * ${gasolinePrice})`;
+
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+
+
+
+
+
+
 Blockly.Blocks['calculate_simplified_carbon_footprint'] = {
   init: function() {
     this.appendDummyInput()
