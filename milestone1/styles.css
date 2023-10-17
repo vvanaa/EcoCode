@@ -125,4 +125,36 @@ footer {
     animation-duration: 1.5s;
 }
 
+
+/* Sun styles */
+.sun {
+    position: absolute;
+    top: 10%; /* Adjust to place the sun higher or lower */
+    right: 1%; /* Adjust to place the sun further or closer to the corner */
+    width: 100px;
+    height: 100px;
+    background: yellow;
+    border-radius: 50%;
+    box-shadow: 0 0 50px yellow; /* Sun's glow effect */
+}
+
+/* Snowflake styles */
+.snowflake {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    animation: snowfall 10s linear infinite; /* Adjust time as needed */
+}
+
+@keyframes snowfall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* Existing raindrop styles... */
+
+
 /* Add more raindrops with different positions and durations as needed */
