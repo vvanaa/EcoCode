@@ -67,6 +67,7 @@
                 </xml>
             </div>
         </div>
+
         <div class="button-container">
             <button onclick="generateCode()">Generate JavaScript</button>
             <button onclick="runCode()">Run JavaScript</button>
@@ -105,14 +106,22 @@
         }
 
         function saveBlocks() {
-            var xml = Blockly.Xml.workspaceToDom(workspace);
-            var xmlText = Blockly.Xml.domToPrettyText(xml);
-            var blob = new Blob([xmlText], { type: 'text/xml' });
+           // Generate the JavaScript code from the Blockly workspace
+           var code = Blockly.JavaScript.workspaceToCode(workspace);
+
+            // This creates a new blob with the JavaScript code.
+            // {type: 'application/javascript'} specifies the MIME type of the file, which is JavaScript in this case.
+            var blob = new Blob([code], {type: 'application/javascript'});
+
+            // Create a download link
             var a = document.createElement('a');
-            a.download = 'blocks.xml';
-            a.href = URL.createObjectURL(blob);
-            a.click();
+            a.download = 'code.js'; // Specify the name of the file to download (can be changed to whatever you prefer)
+            a.href = URL.createObjectURL(blob); // Create an object URL for the blob
+
+            // Simulate a click on the link to automatically start the download
+            a.click();     
         }
+
 
         function loadBlocks() {
             document.getElementById('loadInput').click();
