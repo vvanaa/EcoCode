@@ -158,6 +158,23 @@ Blockly.JavaScript['calculate_simplified_carbon_footprint'] = function(block) {
   
   var totalFootprint = electricityFootprint + vehicleFootprint + dietFootprint;
   
+  var classification;
+    if (totalFootprint <= 400) {
+      classification = 'Very Low Carbon Footprint';
+    } else if (totalFootprint <= 1000) {
+      classification = 'Low Carbon Footprint';
+    } else if (totalFootprint <= 2000) {
+      classification = 'Moderate Carbon Footprint';
+    } else if (totalFootprint <= 3000) {
+      classification = 'High Carbon Footprint';
+    } else {
+      classification = 'Very High Carbon Footprint';
+  }
+
+  var code = 'alert("Simplified carbon footprint score: ' + totalFootprint + 
+           '\\nClassification: ' + classification + '");\n';
+  return code;
+
   // Here, you might want to do something with the result, like display it to the user.
   // We're just going to return it as a value for now.
   var code = 'alert("Simplified carbon footprint score: " + ' + totalFootprint + ');';
