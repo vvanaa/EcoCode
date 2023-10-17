@@ -6,7 +6,7 @@ Blockly.Blocks['turn_off_lights'] = {
     this.appendDummyInput().appendField("Turn Off Lights");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(230);
+    this.setColour(200);
     this.setTooltip("Turn off lights when not in use.");
     this.setHelpUrl("https://www.thisgreenlifestyle.com/all-articles/the-benefits-of-turning-your-lights-off");
   }
@@ -34,7 +34,7 @@ Blockly.Blocks['motion_sensor'] = {
     this.appendDummyInput().appendField("Motion Sensor");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(220);
+    this.setColour(180);
     this.setTooltip("Learn about motion sensors for energy efficiency.");
     this.setHelpUrl("https://theecoguide.org/benefits-using-motion-sensor-light-switches");
   }
@@ -53,7 +53,7 @@ Blockly.Blocks['reduce_water_usage'] = {
     this.appendDummyInput().appendField("Reduce Water Usage");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(210);
+    this.setColour(160);
     this.setTooltip("Reduce water consumption with practical tips.");
     this.setHelpUrl("https://www.epa.gov/watersense/start-saving#save-indoors");
   }
@@ -79,7 +79,7 @@ Blockly.Blocks['calculate_carbon_footprint'] = {
     this.appendDummyInput().appendField("Calculate Carbon Footprint");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(200);
+    this.setColour(140);
     this.setTooltip("Calculate your carbon footprint here and learn its impact on the environment.");
     this.setHelpUrl("https://www.footprintcalculator.org/home/en"); // calculator website
     this.setTooltip("Learn about actions to reduce carbon footprint.");
@@ -107,7 +107,7 @@ Blockly.Blocks['how_to_recycle'] = {
     this.appendDummyInput().appendField("How to Recycle");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(190);
+    this.setColour(120);
     this.setTooltip("Locate your nearest recycling center.");
     this.setHelpUrl("https://recyclenation.com/find/");
     this.setTooltip("Learn about the importance of recycling with guides and tips.");
@@ -135,7 +135,7 @@ Blockly.Blocks['optimize_transportation'] = {
     this.appendDummyInput().appendField("Optimize Transportation");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(160);
+    this.setColour(100);
     this.setTooltip("Find out about multiple methods of sustainable transportation.");
     this.setHelpUrl("https://www.modeshift.com/what-is-the-most-sustainable-type-of-transportation/#:~:text=Besides%20walking%20and%20biking%2C%20traveling,compared%20to%20cars%20and%20airplanes.");
     this.setTooltip("Locate your closest public transportation stations.");
@@ -163,7 +163,7 @@ Blockly.Blocks['solar_panel_control'] = {
     this.appendDummyInput().appendField("Solar Panel Control");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(170);
+    this.setColour(95);
     this.setTooltip("Know about solar panel operation and maintenance.");
     this.setHelpUrl("https://www.cnet.com/home/energy-and-utilities/solar-cheat-sheet-your-complete-guide-to-getting-solar-panels-at-home/");
   }
@@ -189,7 +189,7 @@ Blockly.Blocks['waste_reduction'] = {
     this.appendDummyInput().appendField("Waste Reduction");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(160);
+    this.setColour(90);
     this.setTooltip("Learn tips for reducing waste in daily life.");
     this.setHelpUrl("https://www.epa.gov/recycle/reducing-waste-what-you-can-do");
   }
@@ -208,3 +208,4 @@ function getWasteReductionTips() {
   ];
   return tips;
 };
+
