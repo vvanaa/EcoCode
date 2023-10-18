@@ -1,5 +1,6 @@
 // custom_blocks.js
-// Turn Off Lights
+
+// TURN OFF LIGHTS
 Blockly.Blocks['turn_off_lights'] = {
   init: function() {
     this.appendDummyInput().appendField("Turn Off Lights");
@@ -25,28 +26,9 @@ function getEnergyTips() {
   return tips;
 };
 
-// maybe implement a wait function to remind users to turn off their lights -> could become a notification system in the future
 
-// Motion Sensor
-Blockly.Blocks['motion_sensor'] = {
-  init: function() {
-    this.appendDummyInput().appendField("Motion Sensor");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(180);
-    this.setTooltip("Learn about motion sensors for energy efficiency.");
-    this.setHelpUrl("https://theecoguide.org/benefits-using-motion-sensor-light-switches");
-  }
-};
 
-Blockly.JavaScript['motion_sensor'] = function(block) {
-  var code = 'console.log("Benefits of motion sensors for energy efficiency:");\n';
-  code += 'console.log("Motion sensors reduce energy waste by turning off lights when not needed.");\n';
-  code += 'alert("Motion sensors reduce energy waste by turning off lights when not needed.");'
-  return code;
-};
-
-// Reduce Water Usage
+// REDUCE WATER USAGE
 Blockly.Blocks['reduce_water_usage'] = {
   init: function() {
     this.appendDummyInput().appendField("Reduce Water Usage");
@@ -80,37 +62,9 @@ function getCarbonFootprintTips() {
   return tips;
 };
 
-// Recycle
-Blockly.Blocks['how_to_recycle'] = {
-  init: function() {
-    this.appendDummyInput().appendField("How to Recycle");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(120);
-    this.setTooltip("Locate your nearest recycling center.");
-    this.setHelpUrl("https://recyclenation.com/find/");
-    this.setTooltip("Learn about the importance of recycling with guides and tips.");
-    this.setHelpUrl("https://www.earthday.org/7-tips-to-recycle-better/");
-  }
-};
-
-Blockly.JavaScript['how_to_recycle'] = function(block) {
-  var code = 'console.log("Information about recycling options and how to recycle:");\n';
-  code += 'let recycle_tips = getRecyclingTips();  // Assuming a getRecyclingTips function in JS\n';
-  code += 'alert(recycle_tips)';
-  return code;
-};
 
 
-function getRecyclingTips() {
-  var tips = [
-    " Empty, clean, and dry recyclables\n Keep food and liquid out of recycling\n Keep recyclables loos, not in a bag"
-  ];
-  return tips;
-};
-
-
-// Calculate Electricity Cost
+// ELECTRICITY COST CALCULATION
 Blockly.Blocks['calculate_electricity_cost'] = {
   init: function() {
     this.appendDummyInput().appendField("Calculate Electricity Cost");
@@ -135,7 +89,9 @@ Blockly.JavaScript['calculate_electricity_cost'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-// Calculate Vehicle Expenses
+
+
+// VEHICLE EXPENSE CALCULATION
 Blockly.Blocks['gasoline_expenses'] = {
   init: function() {
     this.appendDummyInput()
@@ -159,7 +115,6 @@ Blockly.Blocks['gasoline_expenses'] = {
     this.setHelpUrl("");
   }
 };
-
 
 Blockly.JavaScript['gasoline_expenses'] = function(block) {
   var gasolinePrice = block.getFieldValue('GASOLINE_TYPE'); // This is the price per gallon based on the selection
@@ -249,7 +204,7 @@ Blockly.JavaScript['calculate_simplified_carbon_footprint'] = function(block) {
 
 
 
-// Optimize Transportation
+// TRANSPORTATION SERVICES
 Blockly.Blocks['optimize_transportation'] = {
   init: function() {
     this.appendDummyInput().appendField("Optimize Transportation");
@@ -277,58 +232,8 @@ function getSustainableTransportationTips() {
   return tips;
 };
 
-// Solar Panel Control
-Blockly.Blocks['solar_panel_control'] = {
-  init: function() {
-    this.appendDummyInput().appendField("Solar Panel Control");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(95);
-    this.setTooltip("Know about solar panel operation and maintenance.");
-    this.setHelpUrl("https://www.cnet.com/home/energy-and-utilities/solar-cheat-sheet-your-complete-guide-to-getting-solar-panels-at-home/");
-  }
-};
 
-Blockly.JavaScript['solar_panel_control'] = function(block) {
-  var code = 'console.log("Information on optimizing solar panel use, including cleaning, maintenance, and energy storage:");\n';
-  code += 'let solar_tips = getSolarPanelTips();  // Assuming a getSolarPanelTips function in JS\n';
-  code += 'alert(solar_tips)';
-  return code;
-};
-
-function getSolarPanelTips() {
-  var tips = [
-    " Clean your solar panels\n Watch your usage via an app\n Take advantage when the sun shines"
-  ];
-  return tips;
-};
-
-// Waste Reduction
-Blockly.Blocks['waste_reduction'] = {
-  init: function() {
-    this.appendDummyInput().appendField("Waste Reduction");
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour(90);
-    this.setTooltip("Learn tips for reducing waste in daily life.");
-    this.setHelpUrl("https://www.epa.gov/recycle/reducing-waste-what-you-can-do");
-  }
-};
-
-Blockly.JavaScript['waste_reduction'] = function(block) {
-  var code = 'console.log("Tips for reducing waste in daily life:");\n';
-  code += 'let waste_tips = getWasteReductionTips();  // Assuming a getWasteReductionTips function in JS\n';
-  code += 'alert(waste_tips)';
-  return code;
-};
-
-function getWasteReductionTips() {
-  var tips = [
-    " Use reusable bottles and cups for to-go beverages\n Compost food scraps whenever you can\n Buy second-hand when you can"
-  ];
-  return tips;
-};
-
+// PAGE AESTHETICS
 document.addEventListener("DOMContentLoaded", function () {
   // Existing setup code...
 
