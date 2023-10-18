@@ -1,5 +1,4 @@
 // custom_blocks.js
-
 // Turn Off Lights
 Blockly.Blocks['turn_off_lights'] = {
   init: function() {
@@ -53,7 +52,7 @@ Blockly.Blocks['reduce_water_usage'] = {
     this.appendDummyInput().appendField("Reduce Water Usage");
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(160);
+    this.setColour(220);
     this.setTooltip("Reduce water consumption with practical tips.");
     this.setHelpUrl("https://www.epa.gov/watersense/start-saving#save-indoors");
   }
@@ -155,12 +154,11 @@ Blockly.Blocks['gasoline_expenses'] = {
         .appendField(new Blockly.FieldNumber(25), "FUEL_EFFICIENCY"); // Assuming a default of 25 mpg
     this.setInputsInline(false);
     this.setOutput(true, "Number");
-    this.setColour(230);
+    this.setColour(250);
     this.setTooltip("Calculate monthly gasoline expenses based on miles driven and fuel efficiency.");
     this.setHelpUrl("");
   }
 };
-
 
 
 Blockly.JavaScript['gasoline_expenses'] = function(block) {
@@ -173,11 +171,6 @@ Blockly.JavaScript['gasoline_expenses'] = function(block) {
 
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
-
-
-
-
-
 
 
 Blockly.Blocks['calculate_simplified_carbon_footprint'] = {
@@ -336,3 +329,23 @@ function getWasteReductionTips() {
   return tips;
 };
 
+document.addEventListener("DOMContentLoaded", function () {
+  // Existing setup code...
+
+  // Function to control the visibility of the sun based on the switch
+  function toggleSun() {
+      const sun = document.querySelector('.sun');
+      if (sun) {
+          sun.style.display = document.getElementById('sunSwitch').checked ? 'block' : 'none';
+      }
+  }
+
+  // Set up the event listener for the toggle switch
+  const sunSwitch = document.getElementById('sunSwitch');
+  if (sunSwitch) {
+      sunSwitch.addEventListener('change', toggleSun);
+  }
+
+  // Initialize the state
+  toggleSun();
+});

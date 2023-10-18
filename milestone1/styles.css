@@ -138,6 +138,7 @@ footer {
 
 
 .sun {
+    display: block; /* Makes the sun visible initially */
     position: absolute;
     top: 10%;
     right: 1%;
@@ -148,6 +149,75 @@ footer {
     box-shadow: 0 0 50px #FFD700; /* glow effect */
     animation: pulse 2s infinite, move 5s infinite;
 }
+
+/* The switch - the box around the slider */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #018f06;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider {
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    border-radius: 50%;
+  }
+  .toggle-container {
+    text-align: center; /* Center the toggle and description */
+    margin-top: 10px; /* Space between copyright text and toggle */
+}
+
+.toggle-description {
+    margin-top: 8px; /* If you want some space between the switch and its description */
+    font-size: 0.8em; /* Smaller font size for the description */
+    color: #666; /* Gray text color for the description */
+}  
 
 /* Animation for the pulsating effect */
 @keyframes pulse {

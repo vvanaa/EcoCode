@@ -82,9 +82,21 @@
             <div id="outputDiv" class="code-output"></div>
         </div>
     </main>
+    <div class="toggle-container">
+        <!-- Toggle switch -->
+        <div class="toggle-switch">
+            <input type="checkbox" id="sunSwitch" checked>
+            <label for="sunSwitch" class="slider"></label>
+        </div>
+        <!-- Optional: Description for the toggle -->
+        <div class="toggle-description">
+            Sun effect
+        </div>
+    </div>
     <footer>
         &copy; EcoCode ♻️
     </footer>
+    
     <script>
         // The existing JavaScript code remains unchanged
         var workspace = Blockly.inject('blocklyDiv', {
@@ -186,5 +198,6 @@
             }
         }
     </script>
+    
 </body>
 </html>
