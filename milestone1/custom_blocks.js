@@ -11,6 +11,48 @@ Blockly.Blocks['turn_off_lights'] = {
   }
 };
 
+
+// Reduce Carbon Footprint
+Blockly.Blocks['reduce_carbon_footprint'] = {
+  init: function() {
+    this.appendDummyInput().appendField("Reduce Carbon Footprint");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(150);
+    this.setTooltip("Tips on reducing your carbon footprint and living sustainably.");
+    this.setHelpUrl("https://www.nature.org/en-us/what-we-do/our-insights/perspectives/how-to-reduce-carbon-footprint/");
+  }
+};
+
+Blockly.JavaScript['reduce_carbon_footprint'] = function(block) {
+  var code = 'console.log("Tips for reducing your carbon footprint:");\n';
+  code += 'let carbon_footprint_tips = getCarbonFootprintTips();  // Assuming a getCarbonFootprintTips function in JS\n';
+  code += 'alert(carbon_footprint_tips)';
+  return code;
+};
+
+
+// Energy-Efficient Appliances
+Blockly.Blocks['energy_efficient_appliances'] = {
+  init: function() {
+    this.appendDummyInput().appendField("Energy-Efficient Appliances");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(160);
+    this.setTooltip("Learn about the advantages of energy-efficient appliances and how to choose them.");
+    this.setHelpUrl("https://www.energy.gov/energysaver/appliances-and-electronics");
+  }
+};
+
+Blockly.JavaScript['energy_efficient_appliances'] = function(block) {
+  var code = 'console.log("Benefits of energy-efficient appliances and tips for selection and maintenance:");\n';
+  code += 'console.log("Energy-efficient appliances can lower your energy bills and reduce environmental impact.");\n';
+  code += 'alert("Consider replacing old appliances with Energy Star-rated models for energy savings.");'
+  return code;
+};
+
+
+
 Blockly.JavaScript['turn_off_lights'] = function(block) {
   var code = 'console.log("Remember to turn off lights when not in use.");\n';
   code += 'let energy_tips = getEnergyTips();  // Assuming a getEnergyTips function in JS\n';

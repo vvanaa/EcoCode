@@ -52,8 +52,10 @@
             <div id="blocklyDiv" class="blockly"></div>
             <div class="toolbox">
                 <xml id="toolbox" style="display: none">
-                    <!-- Add your custom block definitions here -->
+                    <!-- Updated toolbox with new custom blocks -->
                     <block type="calculate_simplified_carbon_footprint"></block>
+                    <block type="reduce_carbon_footprint"></block> <!-- New block -->
+                    <block type="energy_efficient_appliances"></block> <!-- New block -->
                     <block type="math_number">
                         <field name="NUM">0</field> <!-- Default number -->
                     </block>
@@ -164,8 +166,6 @@
             document.body.appendChild(sun); // Append to the body or specific container
         }
 
-    
-
         function createSnowflakes() {
             const numSnowflakes = 100; // Number of snowflakes
 
@@ -181,8 +181,6 @@
             }
         }
         
-
-
         function createRaindrops() {
             const numRaindrops = 50; // Adjust the number of raindrops as needed
 
@@ -201,3 +199,4 @@
     
 </body>
 </html>
+
