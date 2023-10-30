@@ -171,7 +171,7 @@ Blockly.JavaScript['calculate_electricity_cost'] = function(block) {
   var kwh_usage = Blockly.JavaScript.valueToCode(block, 'kwh_usage', Blockly.JavaScript.ORDER_ATOMIC);
   
   // Define the cost per kWh (this value should be updated to reflect the current cost in Orange County)
-  var COST_PER_KWH = 0.20; // This is a hypothetical value; you should input the actual cost per kWh
+  var COST_PER_KWH = 0.120; // This is a hypothetical value; you should input the actual cost per kWh
   
   var code = kwh_usage + ' * ' + COST_PER_KWH;
   return [code, Blockly.JavaScript.ORDER_NONE];

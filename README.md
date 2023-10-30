@@ -42,4 +42,28 @@ In a nutshell, EcoCode is not just a coding project; it's a community-driven ini
 
 EcoCode isn't just about programming; it's about applying the fundamental concepts of parsing, interpretation, and compilation in a unique way that contributes to a more sustainable world. Parsing comes into play as EcoCode analyzes and breaks down each eco-action into understandable "blocks," making complex sustainability ideas digestible for everyone. Interpretation is at the core of our project as it translates these blocks into actionable eco-plans, considering real-time environmental data. Compilation, in the context of EcoCode, involves combining these plans into executable sets of eco-actions. In essence, EcoCode's parsing, interpretation, and compilation processes facilitate the translation of environmental awareness into concrete, personalized actions, offering a dynamic bridge between technology and sustainability for users of all backgrounds.
 
+# Blockly JavaScript Code Generator - EcoCode
+
+This project provides a graphical interface using Google's Blockly to allow users to design custom logic. It then generates JavaScript code based on the designed logic.
+
+## Prerequisites
+
+- A modern web browser (e.g., Chrome, Firefox, Safari, Edge).
+
+## Setup
+
+1. Clone the repository or download the source files.
+2. Navigate to the `milestone1` directory.
+
+## Running the Blockly Interface
+
+1. Open the `index.html` file in a web browser.
+2. Design your logic using the available blocks.
+3. Click the "Generate JavaScript Code" button to view the generated JavaScript code.
+4. Optionally, click the "Save Code" button to download the generated code as a `.js` file.
+
+## Additional Information
+1. The custom blocks are defined in the `custom_blocks.js` file.
+2. The `index.html` file provides the main interface for interacting with Blockly and generating JavaScript code.
+
 :)
