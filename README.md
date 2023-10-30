@@ -1,4 +1,4 @@
-# Programming Languages: Eco Code
+# Programming Languages: Eco Code!
 Welcome to our group project repository developed by the following group members:
 - Viviana
 - Suparna
