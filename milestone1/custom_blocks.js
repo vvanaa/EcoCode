@@ -289,8 +289,6 @@ Blockly.JavaScript['calculate_simplified_carbon_footprint'] = function(block) {
   return code;
 };
 
-
-
 // Optimize Transportation
 Blockly.Blocks['optimize_transportation'] = {
   init: function() {
@@ -367,6 +365,103 @@ Blockly.JavaScript['waste_reduction'] = function(block) {
 function getWasteReductionTips() {
   var tips = [
     " Use reusable bottles and cups for to-go beverages\n Compost food scraps whenever you can\n Buy second-hand when you can"
+  ];
+  return tips;
+};
+
+// Composting Tips
+Blockly.Blocks['composting_tips'] = {
+  init: function() {
+    this.appendDummyInput().appendField("Composting Tips");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(130);
+    this.setTooltip("Learn how to compost and reduce food waste.");
+    this.setHelpUrl("https://www.epa.gov/recycle/composting-home");
+  }
+};
+
+Blockly.JavaScript['composting_tips'] = function(block) {
+  var code = 'console.log("Tips for successful composting:");\n';
+  code += 'let composting_tips = getCompostingTips();  // Assuming a getCompostingTips function in JS\n';
+  code += 'alert(composting_tips)';
+  return code;
+};
+
+function getCompostingTips() {
+  var tips = [
+    "Mix green and brown materials\nTurn the pile regularly\nKeep the compost moist but not soggy"
+  ];
+  return tips;
+};
+
+// Solar Panel Benefits
+Blockly.Blocks['solar_energy_benefits'] = {
+  init: function() {
+    this.appendDummyInput().appendField("Solar Energy Benefits");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(95);
+    this.setTooltip("Learn about the advantages of solar energy.");
+    this.setHelpUrl("https://www.energy.gov/eere/solar/solar-energy-technologies-office");
+  }
+};
+
+Blockly.JavaScript['solar_energy_benefits'] = function(block) {
+  var code = 'console.log("Benefits of using solar energy:");\n';
+  code += 'console.log("Solar energy is renewable and reduces electricity bills.");\n';
+  code += 'alert("Consider installing solar panels on your property for clean energy.");'
+  return code;
+};
+
+// Eco-Friendlt Transportation Options
+Blockly.Blocks['eco_friendly_transportation'] = {
+  init: function() {
+    this.appendDummyInput().appendField("Eco-Friendly Transportation");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(100);
+    this.setTooltip("Explore sustainable transportation choices.");
+    this.setHelpUrl("https://www.ucsusa.org/resources/each-countrys-share-co2-emissions");
+  }
+};
+
+Blockly.JavaScript['eco_friendly_transportation'] = function(block) {
+  var code = 'console.log("Sustainable transportation options:");\n';
+  code += 'let transportation_info = getEcoFriendlyTransportationInfo();  // Assuming a getEcoFriendlyTransportationInfo function in JS\n';
+  code += 'alert(transportation_info)';
+  return code;
+};
+
+function getEcoFriendlyTransportationInfo() {
+  var info = [
+    "Use electric or hybrid vehicles\nOpt for public transportation or carpooling\nExplore cycling and walking options"
+  ];
+  return info;
+};
+
+// Reducing Plastic Use
+Blockly.Blocks['reduce_plastic_use'] = {
+  init: function() {
+    this.appendDummyInput().appendField("Reduce Plastic Use");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(110);
+    this.setTooltip("Discover ways to minimize plastic consumption.");
+    this.setHelpUrl("https://www.nationalgeographic.com/environment/article/plastic-pollution");
+  }
+};
+
+Blockly.JavaScript['reduce_plastic_use'] = function(block) {
+  var code = 'console.log("Tips for reducing plastic use:");\n';
+  code += 'let plastic_reduction_tips = getPlasticReductionTips();  // Assuming a getPlasticReductionTips function in JS\n';
+  code += 'alert(plastic_reduction_tips)';
+  return code;
+};
+
+function getPlasticReductionTips() {
+  var tips = [
+    "Use reusable bags and containers\nAvoid single-use plastic products\nRecycle plastics properly"
   ];
   return tips;
 };
