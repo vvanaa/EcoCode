@@ -56,5 +56,56 @@ Blockly.JavaScript['reduce_water_usage'] = function(block) {
   return code;
 };
 
+// Control thermostat
+Blockly.Blocks['thermostat_control'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Thermostat Control");
+    this.appendValueInput("temperature")
+        .setCheck("Number")
+        .appendField("Set temperature to");
+    this.appendDummyInput()
+        .appendField("Mode")
+        .appendField(new Blockly.FieldDropdown([["Heating", "heat"], ["Cooling", "cool"], ["Off", "off"]]), "mode");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(300);
+    this.setTooltip("Control your thermostat settings.");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['thermostat_control'] = function(block) {
+  var temperature = Blockly.JavaScript.valueToCode(block, 'temperature', Blockly.JavaScript.ORDER_ATOMIC);
+  var mode = block.getFieldValue('mode');
+
+  var code = 'setThermostat(' + temperature + ', "' + mode + '");  // Implement setThermostat function in JS\n';
+  code += 'console.log("Thermostat set to " + ' + temperature + ' + " degrees in ' + mode + ' mode.");\n';
+  return code;
+};
+
+// Control solar panel
+Blockly.Blocks['solar_panel_efficiency'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Solar Panel Efficiency");
+    this.appendValueInput("angle")
+        .setCheck("Number")
+        .appendField("Set panel angle to");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(330);
+    this.setTooltip("Adjust the solar panel angle for maximum efficiency.");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['solar_panel_efficiency'] = function(block) {
+  var angle = Blockly.JavaScript.valueToCode(block, 'angle', Blockly.JavaScript.ORDER_ATOMIC);
+
+  var code = 'setSolarPanelAngle(' + angle + ');  // Implement setSolarPanelAngle function in JS\n';
+  code += 'console.log("Solar panel angle set to " + ' + angle + ' + " degrees for optimal energy generation.");\n';
+  return code;
+};
 
 
