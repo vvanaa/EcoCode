@@ -1,38 +1,87 @@
 // custom_blocks.js
+
+
+// Generate Electricity Emissions Estimate
 Blockly.Blocks['generate_electricity_emissions_estimate'] = {
   init: function() {
-    this.appendDummyInput()
-        .appendField("Generate Electricity Emissions Estimate");
-    this.appendValueInput("COUNTRY")
-        .setCheck("String")
-        .appendField("Country Code");
-    this.appendValueInput("STATE")
-        .setCheck("String")
-        .appendField("State Code");
-    this.appendValueInput("ELECTRICITY_VALUE")
+    this.appendDummyInput().appendField("Generate Electricity Emissions Estimate");
+    this.appendValueInput("electricity_value")
         .setCheck("Number")
         .appendField("Electricity Consumption");
     this.appendDummyInput()
-        .appendField("Unit")
-        .appendField(new Blockly.FieldDropdown([["kWh","kwh"], ["MWh","mwh"]]), "UNIT");
-    this.setInputsInline(false);
-    this.setOutput(true, "Object");
-    this.setColour(230);
-    this.setTooltip("Generate an estimate of electricity emissions.");
-    this.setHelpUrl("https://www.carboninterface.com/api/v1/estimates");
+        .appendField("Electricity Unit")
+        .appendField(new Blockly.FieldDropdown([
+            ["kWh", "kwh"], 
+            ["MWh", "mwh"]
+        ]), "electricity_unit");
+    this.appendDummyInput()
+        .appendField("Country Code")
+        .appendField(new Blockly.FieldTextInput("us"), "country");
+    this.appendDummyInput()
+        .appendField("State Code")
+        .appendField(new Blockly.FieldTextInput("fl"), "state");
+    this.setOutput(true, "Number");
+    this.setColour(160);
+    this.setTooltip("Generate electricity emissions estimate based on electricity consumption and location.");
+    this.setHelpUrl("");
   }
 };
+
 Blockly.JavaScript['generate_electricity_emissions_estimate'] = function(block) {
-  var country = Blockly.JavaScript.valueToCode(block, 'COUNTRY', Blockly.JavaScript.ORDER_ATOMIC);
-  var state = Blockly.JavaScript.valueToCode(block, 'STATE', Blockly.JavaScript.ORDER_ATOMIC);
-  var electricityValue = Blockly.JavaScript.valueToCode(block, 'ELECTRICITY_VALUE', Blockly.JavaScript.ORDER_ATOMIC);
-  var unit = block.getFieldValue('UNIT');
+  var electricity_value = Blockly.JavaScript.valueToCode(block, 'electricity_value', Blockly.JavaScript.ORDER_ATOMIC);
+  var electricity_unit = block.getFieldValue('electricity_unit');
+  var country = block.getFieldValue('country');
+  var state = block.getFieldValue('state');
+  
+  // Define your Carbon Interface API key here
+  var API_KEY = "ZkuRHR05F6eDiKoAgsjTQ";
 
-  var code = `generateEmissionsEstimate(${country}, ${state}, ${electricityValue}, "${unit}")`;
-
-  // Assuming a function 'generateEmissionsEstimate' in JS to handle the API request
-  return [code, Blockly.JavaScript.ORDER_FUNCTION_CALL];
+  var code = `
+    fetch("https://www.carboninterface.com/api/v1/estimates", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer ${API_KEY}",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "type": "electricity",
+        "electricity_unit": "${electricity_unit}",
+        "electricity_value": ${electricity_value},
+        "country": "${country}",
+        "state": "${state}"
+      })
+    })
+    .then(response => response.json())
+    .then(data => {
+      if (data && data.data && data.data.attributes && data.data.attributes.carbon_g) {
+        var emissions = data.data.attributes.carbon_g;
+        return emissions;
+      } else {
+        throw new Error("Failed to fetch emissions data");
+      }
+    })
+    .catch(error => {
+      console.error(error);
+      throw error;
+    });
+  `;
+  
+  return [code, Blockly.JavaScript.ORDER_NONE];
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
@@ -62,6 +111,11 @@ Blockly.JavaScript['text_input'] = function(block) {
 
 
 
+
+
+
+
+
 // Calculate Electricity Cost
 Blockly.Blocks['calculate_electricity_cost'] = {
   init: function() {
@@ -87,6 +141,15 @@ Blockly.JavaScript['calculate_electricity_cost'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+
+
+
+
+
+
+
+
+
 // Calculate Vehicle Expenses
 Blockly.Blocks['gasoline_expenses'] = {
   init: function() {
@@ -111,8 +174,6 @@ Blockly.Blocks['gasoline_expenses'] = {
     this.setHelpUrl("");
   }
 };
-
-
 Blockly.JavaScript['gasoline_expenses'] = function(block) {
   var gasolinePrice = block.getFieldValue('GASOLINE_TYPE'); // This is the price per gallon based on the selection
   var milesPerMonth = Blockly.JavaScript.valueToCode(block, 'MILES', Blockly.JavaScript.ORDER_ATOMIC);
@@ -123,6 +184,14 @@ Blockly.JavaScript['gasoline_expenses'] = function(block) {
 
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
+
+
+
+
+
+
+
+
 
 
 Blockly.Blocks['calculate_simplified_carbon_footprint'] = {
@@ -150,7 +219,6 @@ Blockly.Blocks['calculate_simplified_carbon_footprint'] = {
     this.setHelpUrl("https://www.footprintcalculator.org/"); // the actual calculator for reference
   }
 };
-
 Blockly.JavaScript['calculate_simplified_carbon_footprint'] = function(block) {
   var electricity_usage = Blockly.JavaScript.valueToCode(block, 'electricity_usage', Blockly.JavaScript.ORDER_ATOMIC) || 0;
   var vehicle_mileage = Blockly.JavaScript.valueToCode(block, 'vehicle_mileage', Blockly.JavaScript.ORDER_ATOMIC) || 0;
@@ -198,6 +266,11 @@ Blockly.JavaScript['calculate_simplified_carbon_footprint'] = function(block) {
              '\\nClassification: ' + classification + '");\n';
   return code;
 };
+
+
+
+
+
 
 
 
