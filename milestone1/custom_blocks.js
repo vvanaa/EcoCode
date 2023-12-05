@@ -8,12 +8,15 @@ Blockly.Blocks['generate_electricity_emissions_estimate'] = {
     this.appendValueInput("electricity_value")
         .setCheck("Number")
         .appendField("Electricity Consumption");
+    //this.appendDummyInput()
+    //    .appendField("unit")
+    //    .appendField(new Blockly.FieldDropdown([
+    //        ["kWh", "kwh"], 
+    //        ["MWh", "mwh"]
+    //    ]), "electricity_unit");
     this.appendDummyInput()
         .appendField("Electricity Unit")
-        .appendField(new Blockly.FieldDropdown([
-            ["kWh", "kwh"], 
-            ["MWh", "mwh"]
-        ]), "electricity_unit");
+        .appendField(new Blockly.FieldTextInput("kwh"), "electricity_unit");
     this.appendDummyInput()
         .appendField("Country Code")
         .appendField(new Blockly.FieldTextInput("us"), "country");
@@ -26,17 +29,24 @@ Blockly.Blocks['generate_electricity_emissions_estimate'] = {
     this.setHelpUrl("");
   }
 };
-
 Blockly.JavaScript['generate_electricity_emissions_estimate'] = function(block) {
   var electricity_value = Blockly.JavaScript.valueToCode(block, 'electricity_value', Blockly.JavaScript.ORDER_ATOMIC);
   var electricity_unit = block.getFieldValue('electricity_unit');
   var country = block.getFieldValue('country');
   var state = block.getFieldValue('state');
-  
-  // Define your Carbon Interface API key here
-  var API_KEY = "ZkuRHR05F6eDiKoAgsjTQ";
 
-  var code = `
+  // Define your Carbon Interface API key here
+  var API_KEY = "ZkuRHR05F6eDiKoAgsjTQ";  // Replace with your actual API key
+// alert(electricity_value);
+// alert(electricity_unit);
+// alert(country);
+// alert(state);
+
+// var code = `fetch('https://jsonplaceholder.typicode.com/todos/1') 
+// .then(response => response.json())
+// .then(json => console.log(json))`;
+
+var code = `
     fetch("https://www.carboninterface.com/api/v1/estimates", {
       method: "POST",
       headers: {
@@ -52,14 +62,28 @@ Blockly.JavaScript['generate_electricity_emissions_estimate'] = function(block) 
       })
     })
     .then(response => response.json())
-    .then(data => {
-      if (data && data.data && data.data.attributes && data.data.attributes.carbon_g) {
-        var emissions = data.data.attributes.carbon_g;
-        return emissions;
-      } else {
-        throw new Error("Failed to fetch emissions data");
-      }
-    })
+    .then(json => 
+          {
+            //console.log(json);
+            //console.log(json.data);
+            //console.log(json.data.attributes);
+
+            console.log('Carbon in grams :'+eval(json.data.attributes.carbon_g));
+            
+            console.log('Carbon in pounds :'+eval(json.data.attributes.carbon_lb));
+            
+            console.log('Carbon in kilograms :'+eval(json.data.attributes.carbon_kg));
+            
+            console.log('Carbon in metric tonnes :'+eval(json.data.attributes.carbon_mt));
+            
+            alert('Carbon in grams :'+eval(json.data.attributes.carbon_g));
+            alert('Carbon in pounds :'+eval(json.data.attributes.carbon_lb));
+            alert('Carbon in kilograms :'+eval(json.data.attributes.carbon_kg));
+            alert('Carbon in metric tonnes :'+eval(json.data.attributes.carbon_mt));
+            
+            
+          
+          })
     .catch(error => {
       console.error(error);
       throw error;
@@ -67,26 +91,8 @@ Blockly.JavaScript['generate_electricity_emissions_estimate'] = function(block) 
   `;
   
   return [code, Blockly.JavaScript.ORDER_NONE];
-};
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  
+  };
 
 
 
@@ -140,11 +146,6 @@ Blockly.JavaScript['calculate_electricity_cost'] = function(block) {
   var code = kwh_usage + ' * ' + COST_PER_KWH;
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
-
-
-
-
-
 
 
 
