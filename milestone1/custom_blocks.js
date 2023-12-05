@@ -24,7 +24,7 @@ Blockly.Blocks['generate_electricity_emissions_estimate'] = {
         .appendField("State Code")
         .appendField(new Blockly.FieldTextInput("fl"), "state");
     this.setOutput(true, "Number");
-    this.setColour(160);
+    this.setColour(200);
     this.setTooltip("Generate electricity emissions estimate based on electricity consumption and location.");
     this.setHelpUrl("");
   }
@@ -97,7 +97,122 @@ var code = `
 
 
 
-Blockly.Blocks['text_input'] = {
+  // Generate Flight Emissions Estimate
+Blockly.Blocks['generate_flight_emissions_estimate'] = {
+  init: function() {
+    this.appendDummyInput().appendField("Generate Flight Emissions Estimate");
+    this.appendValueInput("passengers")
+        .setCheck("Number")
+        .appendField("Number of Passengers");
+    this.appendValueInput("departure_airport")
+        .setCheck("String")
+        .appendField("Departure Airport");
+    this.appendValueInput("destination_airport")
+        .setCheck("String")
+        .appendField("Destination Airport");
+    this.appendDummyInput()
+        .appendField("Cabin Class")
+        .appendField(new Blockly.FieldDropdown([
+            ["Economy", "economy"], 
+            ["Premium ", "premium"]
+        ]), "cabin_class");
+    this.appendDummyInput()
+        .appendField("Distance Unit")
+        .appendField(new Blockly.FieldDropdown([
+            ["Kilometers", "km"], 
+            ["Miles", "mi"]
+        ]), "distance_unit");
+    this.setOutput(true, "Number");
+    this.setColour(160);
+    this.setTooltip("Generate flight emissions estimate based on the number of passengers, departure and destination airports, cabin class, and distance unit.");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['generate_flight_emissions_estimate'] = function(block) {
+  var passengers = Blockly.JavaScript.valueToCode(block, 'passengers', Blockly.JavaScript.ORDER_ATOMIC);
+  var departure_airport = Blockly.JavaScript.valueToCode(block, 'departure_airport', Blockly.JavaScript.ORDER_ATOMIC);
+  var destination_airport = Blockly.JavaScript.valueToCode(block, 'destination_airport', Blockly.JavaScript.ORDER_ATOMIC);
+  var cabin_class = block.getFieldValue('cabin_class');
+  var distance_unit = block.getFieldValue('distance_unit');
+
+  // Define your Carbon Interface API key here
+  var API_KEY = "ZkuRHR05F6eDiKoAgsjTQ"; // Replace with your actual API key
+
+  var code = `
+    fetch("https://www.carboninterface.com/api/v1/estimates", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer ${API_KEY}",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "type": "flight",
+        "passengers": ${passengers},
+        "legs": [{
+          "departure_airport": ${departure_airport},
+          "destination_airport": ${destination_airport},
+          "cabin_class": "${cabin_class}"
+        }],
+        "distance_unit": "${distance_unit}"
+      })
+    })
+    .then(response => response.json())
+    .then(json => {
+      console.log('Carbon in grams :'+json.data.attributes.carbon_g);
+      console.log('Carbon in pounds :'+json.data.attributes.carbon_lb);
+      console.log('Carbon in kilograms :'+json.data.attributes.carbon_kg);
+      console.log('Carbon in metric tonnes :'+json.data.attributes.carbon_mt);
+      alert('Carbon in grams :'+json.data.attributes.carbon_g);
+      alert('Carbon in pounds :'+json.data.attributes.carbon_lb);
+      alert('Carbon in kilograms :'+json.data.attributes.carbon_kg);
+      alert('Carbon in metric tonnes :'+json.data.attributes.carbon_mt);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      throw error;
+    });
+  `;
+  
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
+
+
+ 
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  Blockly.Blocks['text_input'] = {
   init: function() {
     this.appendDummyInput()
         .appendField("Input Text")
