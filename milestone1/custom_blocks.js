@@ -1,6 +1,4 @@
 // custom_blocks.js
-
-
 // Generate Electricity Emissions Estimate
 Blockly.Blocks['generate_electricity_emissions_estimate'] = {
   init: function() {
@@ -179,6 +177,90 @@ Blockly.JavaScript['generate_flight_emissions_estimate'] = function(block) {
 
 
  
+// Generate Shipping Emissions Estimate
+Blockly.Blocks['generate_shipping_emissions_estimate'] = {
+  init: function() {
+    this.appendDummyInput().appendField("Generate Shipping Emissions Estimate");
+    this.appendValueInput("weight_value")
+        .setCheck("Number")
+        .appendField("Weight Value");
+    this.appendDummyInput()
+        .appendField("Weight Unit")
+        .appendField(new Blockly.FieldDropdown([
+            ["Grams", "g"], 
+            ["Kilograms", "kg"],
+            ["Pounds", "lb"],
+            ["Tonnes", "mt"]
+        ]), "weight_unit");
+    this.appendValueInput("distance_value")
+        .setCheck("Number")
+        .appendField("Distance Value");
+    this.appendDummyInput()
+        .appendField("Distance Unit")
+        .appendField(new Blockly.FieldDropdown([
+            ["Kilometers", "km"], 
+            ["Miles", "mi"]
+        ]), "distance_unit");
+    this.appendDummyInput()
+        .appendField("Transport Method")
+        .appendField(new Blockly.FieldDropdown([
+            ["Truck", "truck"], 
+            ["Train", "train"],
+            ["Ship", "ship"],
+            ["Plane", "plane"]
+        ]), "transport_method");
+    this.setOutput(true, "Number");
+    this.setColour(140);
+    this.setTooltip("Generate shipping emissions estimate based on weight, distance, and transport method.");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['generate_shipping_emissions_estimate'] = function(block) {
+  var weight_value = Blockly.JavaScript.valueToCode(block, 'weight_value', Blockly.JavaScript.ORDER_ATOMIC);
+  var weight_unit = block.getFieldValue('weight_unit');
+  var distance_value = Blockly.JavaScript.valueToCode(block, 'distance_value', Blockly.JavaScript.ORDER_ATOMIC);
+  var distance_unit = block.getFieldValue('distance_unit');
+  var transport_method = block.getFieldValue('transport_method');
+
+  // Define your Carbon Interface API key here
+  var API_KEY = "ZkuRHR05F6eDiKoAgsjTQ"; // Replace with your actual API key
+
+  var code = `
+    fetch("https://www.carboninterface.com/api/v1/estimates", {
+      method: "POST",
+      headers: {
+        "Authorization": "Bearer ${API_KEY}",
+        "Content-Type": "application/json"
+      },
+      body: JSON.stringify({
+        "type": "shipping",
+        "weight_value": ${weight_value},
+        "weight_unit": "${weight_unit}",
+        "distance_value": ${distance_value},
+        "distance_unit": "${distance_unit}",
+        "transport_method": "${transport_method}"
+      })
+    })
+    .then(response => response.json())
+    .then(json => {
+      console.log('Carbon in grams :'+json.data.attributes.carbon_g);
+      console.log('Carbon in pounds :'+json.data.attributes.carbon_lb);
+      console.log('Carbon in kilograms :'+json.data.attributes.carbon_kg);
+      console.log('Carbon in metric tonnes :'+json.data.attributes.carbon_mt);
+      alert('Carbon in grams :'+json.data.attributes.carbon_g);
+      alert('Carbon in pounds :'+json.data.attributes.carbon_lb);
+      alert('Carbon in kilograms :'+json.data.attributes.carbon_kg);
+      alert('Carbon in metric tonnes :'+json.data.attributes.carbon_mt);
+    })
+    .catch(error => {
+      console.error('Error:', error);
+      throw error;
+    });
+  `;
+  
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
 
 
 
@@ -229,22 +311,6 @@ Blockly.JavaScript['text_input'] = function(block) {
   var code = JSON.stringify(text); // Encapsulate the string in quotes for JavaScript
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
