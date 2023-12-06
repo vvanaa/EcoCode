@@ -388,7 +388,52 @@ Blockly.JavaScript['calculate_simplified_carbon_footprint'] = function(block) {
 
 
 
+// Generate notification system where user inputs email and message
 
+Blockly.Blocks['send_notification'] = {
+  init: function() {
+    this.appendDummyInput().appendField("Send a Notification");
+    this.appendValueInput("email_input")
+        .setCheck("String")
+        .appendField("Your Email");
+    this.appendValueInput("notif_message")
+        .setCheck("String")
+        .appendField("Your Message");
+    this.appendValueInput("user_name")
+        .setCheck("String")
+        .appendField("Your Name");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour('#FF5733');
+    this.setTooltip("Send a notification to the user.");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['send_notification'] = function(block) {
+  var email_input = Blockly.JavaScript.valueToCode(block, 'email_input', Blockly.JavaScript.ORDER_ATOMIC) || "''";
+  var notif_message = Blockly.JavaScript.valueToCode(block, 'notif_message', Blockly.JavaScript.ORDER_ATOMIC) || "''";
+  var user_name = Blockly.JavaScript.valueToCode(block, 'user_name', Blockly.JavaScript.ORDER_ATOMIC) || "''";
+
+  email_input = email_input.startsWith("'") ? email_input : "'" + email_input + "'";
+  notif_message = notif_message.startsWith("'") ? notif_message : "'" + notif_message + "'";
+  user_name = user_name.startsWith("'") ? user_name : "'" + user_name + "'";
+
+  var code = `
+    const notificationapi = require('notificationapi-node-server-sdk');
+    notificationapi.default.init('39safpjg2b08v5p5tqkg0kfkqo', '1vtrmbf3ft1casnbpvrgl0m81ac5e6c33ucf3jilftruldp5a03i');
+    notificationapi.default.send({
+      notificationId: 'Personal Notification',
+      user: { id: ${email_input} },
+      mergeTags: {
+        firstName: ${user_name},
+        alerts: [{ title: ${notif_message} }]
+      }
+    });
+  `;
+
+  return code;
+};
 
 
 
