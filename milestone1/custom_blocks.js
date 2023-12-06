@@ -45,53 +45,49 @@ Blockly.JavaScript['generate_electricity_emissions_estimate'] = function(block) 
 // .then(json => console.log(json))`;
 
 var code = `
+    var API_KEY = "ZkuRHR05F6eDiKoAgsjTQ";
     fetch("https://www.carboninterface.com/api/v1/estimates", {
       method: "POST",
       headers: {
-        "Authorization": "Bearer ${API_KEY}",
+        "Authorization": "Bearer " + API_KEY,
         "Content-Type": "application/json"
       },
       body: JSON.stringify({
         "type": "electricity",
-        "electricity_unit": "${electricity_unit}",
-        "electricity_value": ${electricity_value},
-        "country": "${country}",
-        "state": "${state}"
+        "electricity_unit": "` + electricity_unit + `",
+        "electricity_value": ` + electricity_value + `,
+        "country": "` + country + `",
+        "state": "` + state + `"
       })
     })
-    .then(response => response.json())
-    .then(json => 
-          {
-            //console.log(json);
-            //console.log(json.data);
-            //console.log(json.data.attributes);
-
-            console.log('Carbon in grams :'+eval(json.data.attributes.carbon_g));
-            
-            console.log('Carbon in pounds :'+eval(json.data.attributes.carbon_lb));
-            
-            console.log('Carbon in kilograms :'+eval(json.data.attributes.carbon_kg));
-            
-            console.log('Carbon in metric tonnes :'+eval(json.data.attributes.carbon_mt));
-            
-            alert('Carbon in grams :'+eval(json.data.attributes.carbon_g));
-            alert('Carbon in pounds :'+eval(json.data.attributes.carbon_lb));
-            alert('Carbon in kilograms :'+eval(json.data.attributes.carbon_kg));
-            alert('Carbon in metric tonnes :'+eval(json.data.attributes.carbon_mt));
-            
-            
-          
-          })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Network response was not ok: ' + response.statusText);
+      }
+      return response.json();
+    })
+    .then(json => {
+      let carbonGrams = 'Carbon in grams :' + eval(json.data.attributes.carbon_g);
+      let carbonPounds = 'Carbon in pounds :' + eval(json.data.attributes.carbon_lb);
+      let carbonKilograms = 'Carbon in kilograms :' + eval(json.data.attributes.carbon_kg);
+      let carbonMetricTonnes = 'Carbon in metric tonnes :' + eval(json.data.attributes.carbon_mt);
+      
+      let output = carbonGrams + '\\n' + carbonPounds + '\\n' + carbonKilograms + '\\n' + carbonMetricTonnes;
+      document.getElementById('outputDiv').innerText = output;
+      
+      console.log(carbonGrams);
+      console.log(carbonPounds);
+      console.log(carbonKilograms);
+      console.log(carbonMetricTonnes);
+    })
     .catch(error => {
       console.error(error);
-      throw error;
+      document.getElementById('outputDiv').innerText = 'Error: ' + error.message;
     });
   `;
-  
-  return [code, Blockly.JavaScript.ORDER_NONE];
-  
-  };
 
+  return [code, Blockly.JavaScript.ORDER_NONE];
+};
 
 
 
