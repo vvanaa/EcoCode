@@ -89,6 +89,37 @@ var code = `
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
+//Total Emissions Calculator
+
+Blockly.Blocks['calculate_total_emissions'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Calculate Total Emissions");
+    this.appendValueInput("flight_emissions")
+        .setCheck("Number")
+        .appendField("Flight Emissions");
+    this.appendValueInput("electricity_emissions")
+        .setCheck("Number")
+        .appendField("Electricity Emissions"); 
+    this.appendValueInput("shipping_emissions")
+        .setCheck("Number")
+        .appendField("Shipping Emissions");
+    this.setOutput(true, "Number");
+    this.setColour('#4A7BA7');
+    this.setTooltip("Sum the emissions estimates to get the total emissions");
+    this.setHelpUrl("");
+  }
+};
+
+Blockly.JavaScript['calculate_total_emissions'] = function(block) {
+  var flight_emissions = Blockly.JavaScript.valueToCode(block, 'flight_emissions', Blockly.JavaScript.ORDER_ATOMIC) || 0;
+  var electricity_emissions = Blockly.JavaScript.valueToCode(block, 'electricity_emissions', Blockly.JavaScript.ORDER_ATOMIC) || 0;
+  var shipping_emissions = Blockly.JavaScript.valueToCode(block, 'shipping_emissions', Blockly.JavaScript.ORDER_ATOMIC) || 0;
+
+  var code = flight_emissions + " + " + electricity_emissions + " + " + shipping_emissions;
+  
+  return [code, Blockly.JavaScript.ORDER_ADDITION];
+};
 
 
   // Generate Flight Emissions Estimate
