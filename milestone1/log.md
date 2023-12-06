@@ -1,7 +1,7 @@
 # Group Work Log
 
-- **Viviana**: published website.
-- **Suparna**: Worked completely on interface design, blocks, and testing.
-- **Katherine**: Focused on GitHub organization for submissions.
-- **Pelin**: Handled all of the coding part. 
+- **Viviana**: published website and troubleshooting with site visibility
+- **Suparna**: Worked heavily on interface design, blocks, and testing.
+- **Katherine**: Focused on GitHub organization for submissions and added some blocks.
+- **Pelin**: Handled a majority of the API block additions and overall code.
 - **Catherine**: -
