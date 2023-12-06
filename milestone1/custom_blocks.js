@@ -134,41 +134,44 @@ Blockly.JavaScript['generate_flight_emissions_estimate'] = function(block) {
   var API_KEY = "ZkuRHR05F6eDiKoAgsjTQ"; // Replace with your actual API key
 
   var code = `
-    fetch("https://www.carboninterface.com/api/v1/estimates", {
-      method: "POST",
-      headers: {
-        "Authorization": "Bearer ${API_KEY}",
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        "type": "flight",
-        "passengers": ${passengers},
-        "legs": [{
-          "departure_airport": ${departure_airport},
-          "destination_airport": ${destination_airport},
-          "cabin_class": "${cabin_class}"
-        }],
-        "distance_unit": "${distance_unit}"
-      })
+  fetch("https://www.carboninterface.com/api/v1/estimates", {
+    method: "POST",
+    headers: {
+      "Authorization": "Bearer ${API_KEY}",
+      "Content-Type": "application/json"
+    },
+    body: JSON.stringify({
+      "type": "flight",
+      "passengers": ${passengers},
+      "legs": [{
+        "departure_airport": ${departure_airport},
+        "destination_airport": ${destination_airport},
+        "cabin_class": "${cabin_class}"
+      }],
+      "distance_unit": "${distance_unit}"
     })
-    .then(response => response.json())
-    .then(json => {
-      console.log('Carbon in grams :'+json.data.attributes.carbon_g);
-      console.log('Carbon in pounds :'+json.data.attributes.carbon_lb);
-      console.log('Carbon in kilograms :'+json.data.attributes.carbon_kg);
-      console.log('Carbon in metric tonnes :'+json.data.attributes.carbon_mt);
-      alert('Carbon in grams :'+json.data.attributes.carbon_g);
-      alert('Carbon in pounds :'+json.data.attributes.carbon_lb);
-      alert('Carbon in kilograms :'+json.data.attributes.carbon_kg);
-      alert('Carbon in metric tonnes :'+json.data.attributes.carbon_mt);
-    })
-    .catch(error => {
-      console.error('Error:', error);
-      throw error;
-    });
-  `;
-  
-  return [code, Blockly.JavaScript.ORDER_NONE];
+  })
+  .then(response => response.json())
+  .then(json => {
+    // Formatting the carbon data
+    let carbonData = [
+      'Carbon in grams: ' + json.data.attributes.carbon_g,
+      'Carbon in pounds: ' + json.data.attributes.carbon_lb,
+      'Carbon in kilograms: ' + json.data.attributes.carbon_kg,
+      'Carbon in metric tonnes: ' + json.data.attributes.carbon_mt
+    ].join('\\n');
+
+    // Displaying the result in outputDiv
+    document.getElementById('outputDiv').innerText = carbonData;
+  })
+  .catch(error => {
+    console.error('Error:', error);
+    document.getElementById('outputDiv').innerText = 'Error: ' + error.message;
+  });
+`;
+
+return [code, Blockly.JavaScript.ORDER_NONE];
+
 };
 
 
