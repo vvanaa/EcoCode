@@ -22,7 +22,7 @@ Blockly.Blocks['generate_electricity_emissions_estimate'] = {
         .appendField("State Code")
         .appendField(new Blockly.FieldTextInput("fl"), "state");
     this.setOutput(true, "Number");
-    this.setColour(240);
+    this.setColour('#03492C');
     this.setTooltip("Generate electricity emissions estimate based on electricity consumption and location.");
     this.setHelpUrl("");
   }
@@ -117,7 +117,7 @@ Blockly.Blocks['generate_flight_emissions_estimate'] = {
             ["Miles", "mi"]
         ]), "distance_unit");
     this.setOutput(true, "Number");
-    this.setColour(260);
+    this.setColour('#010101');
     this.setTooltip("Generate flight emissions estimate based on the number of passengers, departure and destination airports, cabin class, and distance unit.");
     this.setHelpUrl("");
   }
@@ -206,7 +206,7 @@ Blockly.Blocks['generate_shipping_emissions_estimate'] = {
             ["Plane", "plane"]
         ]), "transport_method");
     this.setOutput(true, "Number");
-    this.setColour(280);
+    this.setColour('#06975A');
     this.setTooltip("Generate shipping emissions estimate based on weight, distance, and transport method.");
     this.setHelpUrl("");
   }
@@ -294,7 +294,7 @@ Blockly.JavaScript['generate_shipping_emissions_estimate'] = function(block) {
         .appendField("Input Text")
         .appendField(new Blockly.FieldTextInput(""), "TEXT");
     this.setOutput(true, "String"); // This block returns a string
-    this.setColour(300);
+    this.setColour('#06C374');
     this.setTooltip("Enter a text string.");
     this.setHelpUrl(""); // URL to a relevant help page, if needed
   }
@@ -328,7 +328,7 @@ Blockly.Blocks['calculate_simplified_carbon_footprint'] = {
     this.setInputsInline(false);
     this.setPreviousStatement(true, null);
     this.setNextStatement(true, null);
-    this.setColour(320);
+    this.setColour('#47FAAF');
     this.setTooltip("Enter details to calculate a simplified carbon footprint score.");
     this.setHelpUrl("https://www.footprintcalculator.org/"); // the actual calculator for reference
   }
