@@ -3,5 +3,7 @@
 - **Viviana**: published website and troubleshooting with site visibility
 - **Suparna**: Worked heavily on interface design, blocks, and testing.
 - **Katherine**: Focused on GitHub organization for submissions and added some blocks.
-- **Pelin**: Handled a majority of the API block additions and overall code.
+- **Pelin**: Handled all of the coding part & interface design.
 - **Catherine**: -
+
+
