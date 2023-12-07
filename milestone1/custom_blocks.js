@@ -89,39 +89,6 @@ var code = `
   return [code, Blockly.JavaScript.ORDER_NONE];
 };
 
-//Total Emissions Calculator
-
-Blockly.Blocks['calculate_total_emissions'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Calculate Total Emissions");
-    this.appendValueInput("flight_emissions")
-        .setCheck("Number")
-        .appendField("Flight Emissions");
-    this.appendValueInput("electricity_emissions")
-        .setCheck("Number")
-        .appendField("Electricity Emissions"); 
-    this.appendValueInput("shipping_emissions")
-        .setCheck("Number")
-        .appendField("Shipping Emissions");
-    this.setOutput(true, "Number");
-    this.setColour('#4A7BA7');
-    this.setTooltip("Sum the emissions estimates to get the total emissions");
-    this.setHelpUrl("");
-  }
-};
-
-Blockly.JavaScript['calculate_total_emissions'] = function(block) {
-  var flight_emissions = Blockly.JavaScript.valueToCode(block, 'flight_emissions', Blockly.JavaScript.ORDER_ATOMIC) || 0;
-  var electricity_emissions = Blockly.JavaScript.valueToCode(block, 'electricity_emissions', Blockly.JavaScript.ORDER_ATOMIC) || 0;
-  var shipping_emissions = Blockly.JavaScript.valueToCode(block, 'shipping_emissions', Blockly.JavaScript.ORDER_ATOMIC) || 0;
-
-  var code = flight_emissions + " + " + electricity_emissions + " + " + shipping_emissions;
-  
-  return [code, Blockly.JavaScript.ORDER_ADDITION];
-};
-
-
   // Generate Flight Emissions Estimate
 Blockly.Blocks['generate_flight_emissions_estimate'] = {
   init: function() {
@@ -293,37 +260,6 @@ Blockly.JavaScript['generate_shipping_emissions_estimate'] = function(block) {
 return [code, Blockly.JavaScript.ORDER_NONE];
 
 };
-
-
-
-
-// Generate Vehicle Emissions Estimate
-// Generate Fuel Combustion Estimate
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
   Blockly.Blocks['text_input'] = {
   init: function() {
     this.appendDummyInput()
@@ -342,80 +278,6 @@ Blockly.JavaScript['text_input'] = function(block) {
   return [code, Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-
-
-Blockly.Blocks['calculate_simplified_carbon_footprint'] = {
-  init: function() {
-    this.appendDummyInput()
-        .appendField("Calculate Carbon Footprint");
-    this.appendValueInput("electricity_usage")
-        .setCheck("Number")
-        .appendField("Monthly Electricity Usage (kWh)");
-    this.appendValueInput("vehicle_mileage")
-        .setCheck("Number")
-        .appendField("Monthly Vehicle Mileage (miles)");
-    this.appendDummyInput()
-        .appendField("Diet")
-        .appendField(new Blockly.FieldDropdown([
-          ["Meat Lover", "HIGH"], 
-          ["Vegetarian", "MEDIUM"], 
-          ["Vegan", "LOW"]
-        ]), "diet");
-    this.setInputsInline(false);
-    this.setPreviousStatement(true, null);
-    this.setNextStatement(true, null);
-    this.setColour('#47FAAF');
-    this.setTooltip("Enter details to calculate a simplified carbon footprint score.");
-    this.setHelpUrl("https://www.footprintcalculator.org/"); // the actual calculator for reference
-  }
-};
-Blockly.JavaScript['calculate_simplified_carbon_footprint'] = function(block) {
-  var electricity_usage = Blockly.JavaScript.valueToCode(block, 'electricity_usage', Blockly.JavaScript.ORDER_ATOMIC) || 0;
-  var vehicle_mileage = Blockly.JavaScript.valueToCode(block, 'vehicle_mileage', Blockly.JavaScript.ORDER_ATOMIC) || 0;
-  var diet = block.getFieldValue('diet');
-  
-  // Constants representing average emissions per unit. These might need to be updated based on the most recent data or regional specifics.
-  const ELECTRICITY_EMISSIONS_FACTOR = 0.9; // kg CO2e per kWh
-  const GASOLINE_EMISSIONS_FACTOR = 2.31; // kg CO2e per gallon of gasoline (approximate)
-  
-  // Improved approach for diet-related carbon footprint, values per month
-  const DIET_EMISSIONS = {
-    'HIGH': 600, // kg CO2e
-    'MEDIUM': 400, // kg CO2e
-    'LOW': 250 // kg CO2e
-  };
-
-  // Convert electricity usage to carbon footprint
-  var electricityFootprint = electricity_usage * ELECTRICITY_EMISSIONS_FACTOR;
-
-  // Calculate the vehicle footprint assuming a standard fuel economy
-  var vehicleFootprint = vehicle_mileage * GASOLINE_EMISSIONS_FACTOR; // This assumes each mile driven consumes 1/GASOLINE_EMISSIONS_FACTOR gallons of gasoline
-  
-  // Get diet footprint from our updated table
-  var dietFootprint = DIET_EMISSIONS[diet];
-
-  // Total carbon footprint
-  var totalFootprint = electricityFootprint + vehicleFootprint + dietFootprint;
-  
-  // Determine the classification based on the total footprint
-  var classification;
-  if (totalFootprint <= 400) {
-    classification = 'Very Low Carbon Footprint';
-  } else if (totalFootprint <= 1000) {
-    classification = 'Low Carbon Footprint';
-  } else if (totalFootprint <= 2000) {
-    classification = 'Moderate Carbon Footprint';
-  } else if (totalFootprint <= 3000) {
-    classification = 'High Carbon Footprint';
-  } else {
-    classification = 'Very High Carbon Footprint';
-  }
-
-  // Generate the code to create an alert with the footprint and its classification
-  var code = 'alert("Simplified carbon footprint score: ' + totalFootprint + 
-             '\\nClassification: ' + classification + '");\n';
-  return code;
-};
 
 
 
