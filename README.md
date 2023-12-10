@@ -97,3 +97,19 @@ Include any necessary external libraries or SDKs in your project, such as SDKs n
 ### 7. Testing
 Thoroughly test your application after adding new blocks or features. Ensure that the new functionalities work as intended without introducing bugs.
 
+
+## Contributions
+
+**Team Contributions:**
+
+- **Pelin:** Was the primary coder for the project, taking charge of interface design, addressing bugs, and conducting thorough testing.
+
+- **Suparna:** Worked with interface design, notifications block and involved in testing processes.
+
+- **Viviana:** Published the website.
+
+- **Katherine:** Focused on GitHub organization for submissions.
+
+- **Catherine:** [Your contribution goes here.]
+
+
