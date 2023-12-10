@@ -1,0 +1,197 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <title>Blockly Custom Blocks</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        /* Add the raindrop animation styles here */
+        @keyframes raindrop {
+            to {
+                transform: translateY(100vh);
+            }
+        }
+
+        .raindrop {
+            position: absolute;
+            width: 2px;
+            height: 10px;
+            background: blue;
+            animation: raindrop 1s linear infinite;
+            opacity: 0.7;
+        }
+
+        .raindrop:nth-child(1) {
+            left: 5%;
+            animation-duration: 1.2s;
+        }
+
+        .raindrop:nth-child(2) {
+            left: 15%;
+            animation-duration: 1.5s;
+        }
+
+        /* Add more raindrops with different positions and durations as needed */
+    </style>
+    <script src="https://cdn.jsdelivr.net/npm/notificationapi-node-server-sdk/dist/notificationapi-node-server-sdk.min.js"></script>
+    <script src="https://unpkg.com/blockly/blockly.min.js"></script>
+    <script src="custom_blocks.js"></script>
+</head>
+<body>
+    <header>
+        <h1>Blockly Custom Blocks for EcoCode</h1>
+        <a href="https://github.com/vvanaa/EcoCode" target="_blank">
+            <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png" alt="GitHub Logo" width="20" height="20">
+            View on GitHub
+        </a>
+    </header>
+    <main>
+        <!-- The raindrop animation will be created here -->
+        <div class="rain-container"></div>
+        
+        <div class="blockly-container">
+            <div id="blocklyDiv" class="blockly"></div>
+            <div class="toolbox">
+                <xml id="toolbox" style="display: none">
+                    <!-- Updated toolbox with new custom blocks -->
+                    <block type="generate_flight_emissions_estimate"></block>
+                    <block type="generate_electricity_emissions_estimate"></block>
+                    <block type="generate_shipping_emissions_estimate"></block>
+                    <block type="math_number">
+                        <field name="NUM">1</field> <!-- Default number -->
+                    </block>
+                    <block type="text_input"></block>
+                    <block type="send_notification"></block>
+	      </xml>
+            </div>
+        </div>
+
+        <div class="button-container">
+            <button onclick="generateCode()">Generate JavaScript</button>
+            <button onclick="runCode()">Run JavaScript</button>
+            <button onclick="saveBlocks()">Save Blocks</button>
+            <button onclick="loadBlocks()">Load Blocks</button>
+            <input type="file" id="loadInput" style="display: none;" onchange="loadBlocksFile(event)">
+        </div>
+        <div class="output-container">
+            <div id="codeDiv" class="code-output"></div>
+            <div id="outputDiv" class="code-output"></div>
+        </div>
+    </main>
+    <div class="toggle-container">
+        <!-- Toggle switch -->
+        <div class="toggle-switch">
+            <input type="checkbox" id="sunSwitch" checked>
+            <label for="sunSwitch" class="slider"></label>
+        </div>
+        <!-- Optional: Description for the toggle -->
+        <div class="toggle-description">
+            Sun effect
+        </div>
+    </div>
+    <footer>
+        &copy; EcoCode ♻️
+    </footer>
+    
+    <script>
+        // The existing JavaScript code remains unchanged
+        var workspace = Blockly.inject('blocklyDiv', {
+            toolbox: document.getElementById('toolbox'),
+            scrollbars: true
+        });
+
+        function generateCode() {
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            document.getElementById('codeDiv').innerText = code;
+        }
+
+        function runCode() {
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            try {
+                var output = eval(code);
+                document.getElementById('outputDiv').innerText = output;
+            } catch (e) {
+                document.getElementById('outputDiv').innerText = 'Error: ' + e;
+            }
+        }
+
+        function saveBlocks() {
+           // Generate the JavaScript code from the Blockly workspace
+           var code = Blockly.JavaScript.workspaceToCode(workspace);
+
+            // This creates a new blob with the JavaScript code.
+            // {type: 'application/javascript'} specifies the MIME type of the file, which is JavaScript in this case.
+            var blob = new Blob([code], {type: 'application/javascript'});
+
+            // Create a download link
+            var a = document.createElement('a');
+            a.download = 'GeneratedCode.js'; // Specify the name of the file to download (can be changed to whatever you prefer)
+            a.href = URL.createObjectURL(blob); // Create an object URL for the blob
+
+            // Simulate a click on the link to automatically start the download
+            a.click();     
+        }
+
+
+        function loadBlocks() {
+            document.getElementById('loadInput').click();
+        }
+
+        function loadBlocksFile(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var xml = Blockly.utils.xml.textToDom(e.target.result);
+                Blockly.Xml.appendDomToWorkspace(xml, workspace);
+            };
+            reader.readAsText(file);
+        }
+
+        // Add the JavaScript code for the rain animation
+        document.addEventListener("DOMContentLoaded", function () {
+            createRaindrops();
+            createSun();
+            createSnowflakes();
+        });
+        
+        function createSun() {
+            const sun = document.createElement("div");
+            sun.className = "sun";
+            document.body.appendChild(sun); // Append to the body or specific container
+        }
+
+        function createSnowflakes() {
+            const numSnowflakes = 100; // Number of snowflakes
+
+            for (let i = 0; i < numSnowflakes; i++) {
+                const snowflake = document.createElement("div");
+                snowflake.className = "snowflake";
+                document.querySelector(".rain-container").appendChild(snowflake); // Consider renaming the container
+
+                // Random initial position and delay for each snowflake
+                const initialDelay = Math.random() * 5;
+                snowflake.style.left = Math.random() * 100 + "vw";
+                snowflake.style.animationDelay = initialDelay + "s";
+            }
+        }
+        
+        function createRaindrops() {
+            const numRaindrops = 50; // Adjust the number of raindrops as needed
+
+            for (let i = 0; i < numRaindrops; i++) {
+                const raindrop = document.createElement("div");
+                raindrop.className = "raindrop";
+                document.querySelector(".rain-container").appendChild(raindrop);
+
+                // Set a random initial position and delay for each raindrop
+                const initialDelay = Math.random() * 2;
+                raindrop.style.left = Math.random() * 100 + "vw";
+                raindrop.style.animationDelay = initialDelay + "s";
+            }
+        }
+    </script>
+    
+</body>
+</html>
+

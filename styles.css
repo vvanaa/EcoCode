@@ -1,0 +1,264 @@
+/* Reset default margins and padding for certain elements */
+html, body, div, h1, p {
+    margin: 0;
+    padding: 0;
+}
+
+/* Apply a background color to the entire page */
+body {
+    background-color: #f0f0f0;
+    font-family: Arial, sans-serif;
+}
+
+/* Style the header */
+header {
+    background-color: #333;
+    color: #fff;
+    padding: 20px 0;
+    text-align: center;
+}
+
+header a {
+    color: #fff;
+    text-decoration: none;
+    margin-left: 20px;
+}
+
+/* Main content container */
+main {
+    max-width: 1200px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #fff;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Blockly container */
+.blockly-container {
+    display: flex;
+    justify-content: space-between;
+}
+
+.blockly {
+    flex-grow: 1;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-right: 20px;
+    min-height: 400px;
+}
+
+.toolbox {
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    width: 200px;
+}
+
+/* Button container */
+.button-container {
+    margin-top: 20px;
+    text-align: center;
+}
+
+.button-container button {
+    background-color: #333;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    margin-right: 10px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.button-container input[type="file"] {
+    display: none;
+}
+
+/* Output container */
+.output-container {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.code-output {
+    flex-grow: 1;
+    background-color: #f0f0f0;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding: 10px;
+    min-height: 200px;
+}
+
+/* Footer */
+footer {
+    text-align: center;
+    margin-top: 20px;
+    color: #888;
+}
+
+/* Raindrop animation */
+@keyframes raindrop {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+/* Raindrop animation */
+@keyframes raindrop {
+    to {
+        transform: translateY(100vh); /* Animation: Move raindrop from top to bottom of viewport */
+    }
+}
+
+/* Style for raindrop elements */
+.raindrop {
+    position: absolute; /* Allows positioning anywhere on the screen */
+    width: 2px; /* Width of each raindrop */
+    height: 10px; /* Height of each raindrop */
+    background: blue; /* Color of the raindrops (blue) */
+    animation: raindrop 1s linear infinite; /* Apply the 'raindrop' animation, 1 second duration, smooth movement, and repeat infinitely */
+    opacity: 0.7; /* Slightly transparent raindrops */
+}
+
+/* Style for the first raindrop */
+.raindrop:nth-child(1) {
+    left: 5%; /* Position the first raindrop 5% from the left edge */
+    animation-duration: 1.2s; /* Override animation duration to make it fall a bit slower (1.2 seconds) */
+}
+
+/* Style for the second raindrop */
+.raindrop:nth-child(2) {
+    left: 15%; /* Position the second raindrop 15% from the left edge */
+    animation-duration: 1.5s; /* Override animation duration to make it fall a bit faster (1.5 seconds) */
+}
+
+
+
+.sun {
+    display: block; /* Makes the sun visible initially */
+    position: absolute;
+    top: 10%;
+    right: 1%;
+    width: 100px;
+    height: 100px;
+    background: radial-gradient(circle, #FFD700 10%, #FFA500 30%, #FF4500 100%);
+    border-radius: 50%;
+    box-shadow: 0 0 50px #FFD700; /* glow effect */
+    animation: pulse 2s infinite, move 5s infinite;
+}
+
+/* The switch - the box around the slider */
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 60px;
+    height: 34px;
+  }
+  
+  /* Hide default HTML checkbox */
+  .toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+  }
+  
+  /* The slider */
+  .slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #ccc;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  .slider:before {
+    position: absolute;
+    content: "";
+    height: 26px;
+    width: 26px;
+    left: 4px;
+    bottom: 4px;
+    background-color: white;
+    -webkit-transition: .4s;
+    transition: .4s;
+  }
+  
+  input:checked + .slider {
+    background-color: #018f06;
+  }
+  
+  input:checked + .slider:before {
+    -webkit-transform: translateX(26px);
+    -ms-transform: translateX(26px);
+    transform: translateX(26px);
+  }
+  
+  /* Rounded sliders */
+  .slider {
+    border-radius: 34px;
+  }
+  
+  .slider:before {
+    border-radius: 50%;
+  }
+  .toggle-container {
+    text-align: center; /* Center the toggle and description */
+    margin-top: 10px; /* Space between copyright text and toggle */
+}
+
+.toggle-description {
+    margin-top: 8px; /* If you want some space between the switch and its description */
+    font-size: 0.8em; /* Smaller font size for the description */
+    color: #666; /* Gray text color for the description */
+}  
+
+/* Animation for the pulsating effect */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 50px #FFD700;
+    }
+    50% {
+        box-shadow: 0 0 100px #FF8C00;
+        transform: scale(1.1);
+    }
+    100% {
+        box-shadow: 0 0 50px #FFD700;
+        transform: scale(1);
+    }
+}
+
+/* Animation for the floating effect */
+@keyframes move {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+/* Snowflake styles */
+.snowflake {
+    position: absolute;
+    width: 5px;
+    height: 5px;
+    background: white;
+    border-radius: 50%;
+    animation: snowfall 10s linear infinite; /* Adjust time as needed */
+}
+
+@keyframes snowfall {
+    to {
+        transform: translateY(100vh);
+    }
+}
+
+
+
