@@ -27,23 +27,19 @@ The world is facing critical environmental challenges, and it's high time we all
 ***Custom Blocks in EcoCode
 EcoCode features several custom Blockly blocks, each designed to engage users in environmental awareness and action:
 
-1. **Generate Electricity Emissions Estimate: Users can calculate the carbon emissions from electricity consumption based on location-specific data.
-2. **Generate Flight Emissions Estimate: This block allows users to estimate emissions from air travel, taking into account factors like the number of passengers, airports, cabin class, and more.
-3. **Generate Shipping Emissions Estimate: Users can determine the carbon footprint of various shipping methods, considering weight, distance, and transport type.
-4. **Text Input Block: A simple block for entering text, enhancing user interaction within the platform.
-5. **Notification System: An innovative feature where users can input their email, name, and a custom message to send notifications, fostering user engagement and communication.
+1. **Generate Electricity Emissions Estimate:** Users can calculate the carbon emissions from electricity consumption based on location-specific data.
+2. **Generate Flight Emissions Estimate:** This block allows users to estimate emissions from air travel, taking into account factors like the number of passengers, airports, cabin class, and more.
+3. **Generate Shipping Emissions Estimate:** Users can determine the carbon footprint of various shipping methods, considering weight, distance, and transport type.
+4. **Text Input Block:** A simple block for entering text, enhancing user interaction within the platform.
+5. **Notification System:** An innovative feature where users can input their email, name, and a custom message to send notifications, fostering user engagement and communication.
 
 ##Interactive Elements and Event Listeners
 ** EcoCode incorporates interactive elements and event listeners to enhance user engagement. For example, toggling the visibility of certain elements in response to user interactions provides a more dynamic experience.
 
 **Main Goals:**
-1. **Boost Environmental Awareness:** EcoCode's main aim is to help you understand and care more about environmental issues. By using real-world data, it shows you the direct impact of your eco-actions.
-
-2. **User-Friendly:** We're making sure EcoCode is super easy to use, even if you've never coded before. We want everyone to be able to join the sustainability party!
-
-3. **Collaboration and Learning:** EcoCode is all about teamwork! You can share your eco-action plans and learn from others. Together, we can make a real change for the environment.
-
-In a nutshell, EcoCode is not just a coding project; it's a community-driven initiative to make the world a greener, better place. So, join us on this exciting journey to code for a brighter, more sustainable future! 
+- **Enhancing Environmental Awareness**: EcoCode is dedicated to increasing understanding and concern for environmental issues through interactive and real-world data integration.
+- **User-Friendly Experience**: With a focus on accessibility, EcoCode is designed to be intuitive and approachable, even for those new to coding.
+- **Promoting Collaboration and Learning**: The platform encourages sharing of eco-action plans and collaborative learning, driving collective environmental change.
 
 
 **How EcoCode Relates to Parsing, Interpretation, and Compilation:**
@@ -53,6 +49,9 @@ EcoCode isn't just about programming; it's about applying the fundamental concep
 # Blockly JavaScript Code Generator - EcoCode
 
 This project provides a graphical interface using Google's Blockly to allow users to design custom logic. It then generates JavaScript code based on the designed logic.
+
+## Relating to Parsing, Interpretation, and Compilation
+EcoCode uniquely applies parsing, interpretation, and compilation concepts to promote sustainability. It parses complex sustainability concepts into user-friendly blocks, interprets these into actionable plans considering real-time data, and compiles them into executable eco-friendly strategies.
 
 ## Prerequisites
 
