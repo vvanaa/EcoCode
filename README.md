@@ -1,4 +1,4 @@
-# EcoCode - Where Sustainability Meets Code
+# EcoCode
 
 ## Project Members
 - Viviana
