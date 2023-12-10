@@ -46,8 +46,9 @@ EcoCode applies these concepts to transform environmental awareness into actiona
 
 ---
 
-## Blockly JavaScript Code Generator - EcoCode
 
+## Blockly JavaScript Code Generator - EcoCode
+### [GitHub-Pages URL](https://vvanaa.github.io/EcoCode/milestone1/)
 This feature provides a graphical interface to design logic and generate JavaScript code.
 
 ### Prerequisites
@@ -66,3 +67,33 @@ This feature provides a graphical interface to design logic and generate JavaScr
 ### Additional Information
 - Custom blocks are in `custom_blocks.js`.
 - `index.html` is the main interface for Blockly interaction.
+
+- Certainly! Here's a section for your README that outlines the steps for extending your Blockly-based project with new features:
+
+---
+
+## Extending EcoCode with New Features
+
+To enhance EcoCode with additional functionalities, follow these steps:
+
+### 1. Add Custom Blocks to `custom_blocks.js`
+Define new custom blocks in the `custom_blocks.js` file. Your current blocks like `generate_electricity_emissions_estimate`, `generate_flight_emissions_estimate`, and others, are defined with specific attributes such as fields, inputs, tooltips, and colors.
+
+### 2. Add JavaScript Generators
+For every new block, define the JavaScript code that will be generated when the block is used. This is done in `custom_blocks.js` using `Blockly.JavaScript['block_name']`. For example, `Blockly.JavaScript['generate_electricity_emissions_estimate']` creates a JavaScript snippet to calculate electricity emissions.
+
+### 3. Update the Toolbox in `index.html`
+Include your new custom blocks in the Blockly workspace by updating the toolbox in `index.html`. Modify the XML structure to add new categories or items as needed.
+
+### 4. Include Additional Functionality
+Add any additional JavaScript functions required for your project, like event listeners or interactive elements. For instance, a `toggleSun()` function to change element visibility based on user input.
+
+### 5. Integrating with External APIs
+Ensure that your custom blocks correctly interact with external APIs. Check for valid API keys, correct endpoint URLs, and handle API responses efficiently.
+
+### 6. Handling Dependencies
+Include any necessary external libraries or SDKs in your project, such as SDKs needed for functionalities like notifications.
+
+### 7. Testing
+Thoroughly test your application after adding new blocks or features. Ensure that the new functionalities work as intended without introducing bugs.
+
