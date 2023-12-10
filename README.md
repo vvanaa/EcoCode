@@ -22,15 +22,19 @@ EcoCode is an exciting project that brings together two seemingly different worl
 **Motivation:**
 The world is facing critical environmental challenges, and it's high time we all pitched in to make a difference. EcoCode is our way of making sustainability cool and accessible. We believe that by merging coding with real-time environmental data, we can make a big impact and encourage everyone to be more eco-conscious.
 
-**Potential Project Phases:**
+**Project Features
 
-1. **Blockly API Made Easy:** First, we'll dive into the Blockly API, a tool that simplifies coding for beginners. This step will make sure that EcoCode is super user-friendly.
+***Custom Blocks in EcoCode
+EcoCode features several custom Blockly blocks, each designed to engage users in environmental awareness and action:
 
-2. **Eco-Action Building Blocks:** The heart of EcoCode is its library of eco-action blocks. Think of these like Lego pieces for saving the planet! Users can pick and choose from these blocks to create their own eco-action plans.
+1. **Generate Electricity Emissions Estimate: Users can calculate the carbon emissions from electricity consumption based on location-specific data.
+2. **Generate Flight Emissions Estimate: This block allows users to estimate emissions from air travel, taking into account factors like the number of passengers, airports, cabin class, and more.
+3. **Generate Shipping Emissions Estimate: Users can determine the carbon footprint of various shipping methods, considering weight, distance, and transport type.
+4. **Text Input Block: A simple block for entering text, enhancing user interaction within the platform.
+5. **Notification System: An innovative feature where users can input their email, name, and a custom message to send notifications, fostering user engagement and communication.
 
-3. **Weather Data for Context:** We're planning on adding a cool feature where you can see real-time weather data. It helps you make eco-action plans that make sense for your location and current conditions.
-
-4. **Helpful Guides and Tutorials:** We know coding can be intimidating, especially for newcomers. So, we'll plan on making detailed guides and tutorials to make sure everyone can use EcoCode effectively. We're all about sharing knowledge!
+##Interactive Elements and Event Listeners
+** EcoCode incorporates interactive elements and event listeners to enhance user engagement. For example, toggling the visibility of certain elements in response to user interactions provides a more dynamic experience.
 
 **Main Goals:**
 1. **Boost Environmental Awareness:** EcoCode's main aim is to help you understand and care more about environmental issues. By using real-world data, it shows you the direct impact of your eco-actions.
