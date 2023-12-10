@@ -316,7 +316,7 @@ Blockly.JavaScript['send_notification'] = function(block) {
     const notificationapi = require('notificationapi-node-server-sdk');
     notificationapi.default.init('39safpjg2b08v5p5tqkg0kfkqo', '1vtrmbf3ft1casnbpvrgl0m81ac5e6c33ucf3jilftruldp5a03i');
     notificationapi.default.send({
-      notificationId: 'Personal Notification',
+      notificationId: 'personal_notification',
       user: { id: ${email_input} },
       mergeTags: {
         firstName: ${user_name},

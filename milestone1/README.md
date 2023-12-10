@@ -1,6 +1,13 @@
 # Blockly JavaScript Code Generator - EcoCode
 
 This project provides a graphical interface using Google's Blockly to allow users to design custom logic. It then generates JavaScript code based on the designed logic.
+## Videos
+#### Technical Introduction
+https://drive.google.com/file/d/1HQ0833KdR6Aph_YxUoIZl_qqCioP8gGP/view?usp=share_link
+#### EcoCode Introduction
+
+## GitHub-Pages URL
+https://vvanaa.github.io/EcoCode/milestone1/ 
 
 ## Prerequisites
 
