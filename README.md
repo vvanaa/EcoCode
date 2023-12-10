@@ -57,7 +57,7 @@ This project provides a graphical interface using Google's Blockly to allow user
 ## Setup
 
 1. Clone the repository or download the source files.
-2. Navigate to the `milestone1` directory.
+2. Navigate to the `milestone1` directory or the 'main' directory.
 
 ## Running the Blockly Interface
 
