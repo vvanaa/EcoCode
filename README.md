@@ -1,7 +1,3 @@
-Sure, I can help create a more visually appealing layout for your README. I'll organize the content into sections with improved formatting. Note that while I can provide a text-based layout, implementing it with actual styling (like specific fonts, colors, or interactive elements) would require HTML/CSS or Markdown formatting, which you would need to apply in your actual README file.
-
----
-
 # EcoCode - Where Sustainability Meets Code
 
 ## Project Members
