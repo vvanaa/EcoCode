@@ -27,11 +27,11 @@ The world is facing critical environmental challenges, and it's high time we all
 ***Custom Blocks in EcoCode
 EcoCode features several custom Blockly blocks, each designed to engage users in environmental awareness and action:
 
-1. **Generate Electricity Emissions Estimate:** Users can calculate the carbon emissions from electricity consumption based on location-specific data.
-2. **Generate Flight Emissions Estimate:** This block allows users to estimate emissions from air travel, taking into account factors like the number of passengers, airports, cabin class, and more.
-3. **Generate Shipping Emissions Estimate:** Users can determine the carbon footprint of various shipping methods, considering weight, distance, and transport type.
-4. **Text Input Block:** A simple block for entering text, enhancing user interaction within the platform.
-5. **Notification System:** An innovative feature where users can input their email, name, and a custom message to send notifications, fostering user engagement and communication.
+1.  **Generate Electricity Emissions Estimate:** Users can calculate the carbon emissions from electricity consumption based on location-specific data.
+2.  **Generate Flight Emissions Estimate:** This block allows users to estimate emissions from air travel, taking into account factors like the number of passengers, airports, cabin class, and more.
+3.  **Generate Shipping Emissions Estimate:** Users can determine the carbon footprint of various shipping methods, considering weight, distance, and transport type.
+4.  **Text Input Block:** A simple block for entering text, enhancing user interaction within the platform.
+5.  **Notification System:** An innovative feature where users can input their email, name, and a custom message to send notifications, fostering user engagement and communication.
 
 ##Interactive Elements and Event Listeners
 ** EcoCode incorporates interactive elements and event listeners to enhance user engagement. For example, toggling the visibility of certain elements in response to user interactions provides a more dynamic experience.
