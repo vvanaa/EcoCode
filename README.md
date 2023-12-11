@@ -11,6 +11,7 @@
 
 ## Videos
 - [Technical Introduction](https://drive.google.com/file/d/1HQ0833KdR6Aph_YxUoIZl_qqCioP8gGP/view?usp=share_link)
+- [Technical Introduction V2](https://drive.google.com/file/d/1L5MbV7Z_9sSOuh4CMVzi21IaBomj0tb-/view?usp=sharing)
 - [EcoCode Introduction](https://drive.google.com/file/d/1PndMrkP62fhoOIT8M4I34tmmfLRkkNCt/view?usp=share_link)
 
 ---
