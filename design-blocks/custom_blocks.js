@@ -56,5 +56,32 @@ Blockly.JavaScript['reduce_water_usage'] = function(block) {
   return code;
 };
 
+Blockly.Blocks['random_environment_fact'] = {
+  init: function() {
+    this.appendDummyInput()
+        .appendField("Random Environment Fact");
+    this.setPreviousStatement(true, null);
+    this.setNextStatement(true, null);
+    this.setColour(120);
+    this.setTooltip("Displays a random fact or tip about helping the environment.");
+    this.setHelpUrl(""); // set this to a URL with more information if available
+  }
+};
 
+Blockly.JavaScript['random_environment_fact'] = function(block) {
+  var code = 'displayRandomEnvironmentFact();\n';
+  return code;
+};
 
+function displayRandomEnvironmentFact() {
+  const facts = [
+    // facts / tips go here
+  ];
+  
+  // Randomly select a fact
+  const randomFact = facts[Math.floor(Math.random() * facts.length)];
+  
+  // display the fact - this would be implementation-specific, e.g., logging to console,
+  // showing on a webpage, or in an application alert.
+  console.log(randomFact);
+}
