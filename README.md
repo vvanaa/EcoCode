@@ -112,6 +112,6 @@ Thoroughly test your application after adding new blocks or features. Ensure tha
 
 - **Katherine:** Focused on GitHub organization for submissions.
 
-- **Catherine:** [Your contribution goes here.]
+- **Catherine:** Addressed problems/functionality of project at midterm benchmark; Provided the ideas of new usable blocks ; midterm presentation
 
 
